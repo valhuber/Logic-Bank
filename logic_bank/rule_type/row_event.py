@@ -1,10 +1,10 @@
 from typing import Callable
 
-# from python_rules.exec_row_logic.logic_row import LogicRow <== circular import (??)
-import python_rules.exec_row_logic.logic_row as LogicRow
+# from logic_bank.exec_row_logic.logic_row import LogicRow <== circular import (??)
+import logic_bank.exec_row_logic.logic_row as LogicRow
 
-from python_rules.rule_bank.rule_bank import RuleBank
-from python_rules.rule_type.abstractrule import AbstractRule
+from logic_bank.rule_bank.rule_bank import RuleBank
+from logic_bank.rule_type.abstractrule import AbstractRule
 
 
 class AbstractRowEvent(AbstractRule):

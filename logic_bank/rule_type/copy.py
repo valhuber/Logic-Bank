@@ -1,10 +1,11 @@
 from sqlalchemy.orm import RelationshipProperty
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
-import python_rules.exec_row_logic.logic_row as LogicRow
-from python_rules.rule_bank.rule_bank import RuleBank
-from python_rules.rule_type.derivation import Derivation
+import logic_bank.exec_row_logic.logic_row as LogicRow
+from logic_bank.rule_bank.rule_bank import RuleBank
+from logic_bank.rule_type.derivation import Derivation
 from typing import Callable
+
 
 class Copy(Derivation):
 

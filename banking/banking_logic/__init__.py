@@ -6,11 +6,11 @@ from sqlalchemy import event
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import session
 
-from python_rules.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
-from python_rules.rule_bank import rule_bank_setup
+from logic_bank.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
+from logic_bank.rule_bank import rule_bank_setup
 from banking.banking_logic.banking_rules_bank import activate_basic_rules
 
-from python_rules.util import prt
+from logic_bank.util import prt
 
 """ Initialization
 1 - Connect

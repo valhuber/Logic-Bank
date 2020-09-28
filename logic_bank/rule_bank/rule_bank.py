@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import List, TypeVar, Dict
-from python_rules import engine_logger
-from python_rules.util import prt
+from logic_bank import engine_logger
+from logic_bank.util import prt
 from datetime import datetime
 
 # https://stackoverflow.com/questions/6760685/creating-a-singleton-in-python

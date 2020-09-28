@@ -1,9 +1,9 @@
 import sqlalchemy
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
-from python_rules.exec_row_logic.logic_row import ParentRoleAdjuster
-from python_rules.rule_bank.rule_bank import RuleBank
-from python_rules.rule_type.aggregate import Aggregate
+from logic_bank.exec_row_logic.logic_row import ParentRoleAdjuster
+from logic_bank.rule_bank.rule_bank import RuleBank
+from logic_bank.rule_type.aggregate import Aggregate
 
 
 class Count(Aggregate):

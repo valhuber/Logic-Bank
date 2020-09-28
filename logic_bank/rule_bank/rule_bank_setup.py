@@ -4,9 +4,9 @@ from sqlalchemy import event, MetaData
 from sqlalchemy.engine import Engine
 from sqlalchemy.ext.declarative import declarative_base
 
-from python_rules.rule_bank.rule_bank import RuleBank
-from python_rules.exec_trans_logic.listeners import before_flush, before_commit
-from python_rules.rule_bank import rule_bank_withdraw
+from logic_bank.rule_bank.rule_bank import RuleBank
+from logic_bank.exec_trans_logic.listeners import before_flush, before_commit
+from logic_bank.rule_bank import rule_bank_withdraw
 from sqlalchemy.orm import session
 
 def setup(a_session: session, an_engine: Engine):  # TODO major - ensure compatible with fab, flask etc

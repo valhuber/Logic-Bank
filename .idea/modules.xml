@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Logic-Bank.iml" filepath="$PROJECT_DIR$/.idea/Logic-Bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Logic-Bank.wiki/.idea/Logic-Bank.wiki.iml" filepath="$PROJECT_DIR$/../Logic-Bank.wiki/.idea/Logic-Bank.wiki.iml" />
     </modules>
   </component>
 </project>

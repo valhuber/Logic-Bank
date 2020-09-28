@@ -17,13 +17,13 @@ def desc():
 
 
 project_urls = {
-  'Python Rules': 'https://github.com/valhuber/python-rules/wiki'
+  'Python Rules': 'https://github.com/valhuber/logic-bank/wiki'
 }
 
 setup(
     name="python-rules",
     version="0.0.3",
-    url="https://github.com/valhuber/python-rules",
+    url="https://github.com/valhuber/logic-bank",
     license="BSD",
     author="Val Huber",
     author_email="valjhuber@gmail.com",
@@ -34,8 +34,8 @@ setup(
     ),
     long_description=desc(),
     long_description_content_type="text/x-rst",
-    # packages=find_packages(include=['python_rules']),
-    packages=['python_rules', 'python_rules.exec_row_logic', 'python_rules.exec_trans_logic', 'python_rules.rule_bank', 'python_rules.rule_type'],
+    # packages=find_packages(include=['logic_bank']),
+    packages=['logic_bank', 'logic_bank.exec_row_logic', 'logic_bank.exec_trans_logic', 'logic_bank.rule_bank', 'logic_bank.rule_type'],
     package_data={"": ["LICENSE"]},
     include_package_data=True,
     zip_safe=False,
