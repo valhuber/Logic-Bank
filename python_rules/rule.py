@@ -45,7 +45,8 @@ class Rule:
 
     @staticmethod
     def constraint(validate: object, as_condition: any = None,
-                   error_msg: str = "(error_msg not provided)", calling: Callable = None):
+                   error_msg: str = "(error_msg not provided)",
+                   calling: Callable = None):
         """
         Constraints declare condition that must be true for all commits
 
