@@ -247,7 +247,7 @@ the engine will reorganize execution order and database access, automatically
 
 #### Contents
 This is the development project for `python-rules`:
-* Explore project contents [here](../../wiki/Explore-Python-Rules)
+* Explore project contents [here](../../wiki/Explore-Logic-Bank)
 * This project also includes a sample application
 used to test and illustrate rules.  Importantly,
 it inclues comparisons of Business logic, both
