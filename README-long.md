@@ -63,7 +63,7 @@ expressed in Python
   is automatically shared, whether for hand-written code (Flask apps, APIs)
   or via generators such as Flask AppBuilder.
 
- 3. The **python-rules** logic engine handles sqlalchemy `before_flush` events on
+ 3. The **logic_bank** logic engine handles sqlalchemy `before_flush` events on
 `Mapped Tables`
 
  4. The logic engine operates much like a spreadsheet:
@@ -255,7 +255,7 @@ Here's how rules can help.
 
 #### Working Software _Now_
 The examples above illustrate how just a few rules can replace 
-[pages of code](https://github.com/valhuber/python-rules/wiki/by-code).
+[pages of code](https://github.com/valhuber/logic-bank/wiki/by-code).
 
 #### Collaboration - Running Screens
 
@@ -308,7 +308,7 @@ Issues?  [Try here](https://github.com/valhuber/fab-quick-start/wiki/Mac-Python-
 Using your IDE or command line: 
 ```
 git fork / clone
-cd python-rules
+cd logic_bank
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt

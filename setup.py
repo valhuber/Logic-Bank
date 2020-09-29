@@ -21,7 +21,7 @@ project_urls = {
 }
 
 setup(
-    name="python-rules",
+    name="logic-bank",
     version="0.0.3",
     url="https://github.com/valhuber/logic-bank",
     license="BSD",

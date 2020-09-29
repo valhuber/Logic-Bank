@@ -8,8 +8,8 @@ from flask_appbuilder import AppBuilder, SQLA
 use_rules = True
 
 if use_rules:
-    cwd = os.getcwd()  # eg, /Users/val/python/pycharm/python-rules/nw_app
-    required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/python-rules
+    cwd = os.getcwd()  # eg, /Users/val/python/pycharm/logic-bank/nw_app
+    required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
     required_path_python_rules = required_path_python_rules.replace("/nw_app", "")
 
     sys_path = ""

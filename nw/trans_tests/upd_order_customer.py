@@ -13,8 +13,8 @@ from datetime import datetime
 from sqlalchemy import inspect, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 
-cwd = os.getcwd()   # eg, /Users/val/python/pycharm/python-rules/nw/trans_tests
-required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/python-rules
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/trans_tests
+required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
 required_path_python_rules = required_path_python_rules.replace("/nw/trans_tests", "")
 
 sys_path = ""

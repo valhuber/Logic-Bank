@@ -14,8 +14,8 @@ from decimal import Decimal
 from sqlalchemy import inspect, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 
-cwd = os.getcwd()   # eg, /Users/val/python/pycharm/python-rules/nw/trans_tests
-required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/python-rules
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/trans_tests
+required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
 required_path_python_rules = required_path_python_rules.replace("/nw/trans_tests", "")
 
 sys_path = ""
@@ -199,7 +199,7 @@ Failed run:
         pydev_imports.execfile(file, globals, locals)  # execute the script
       File "/Applications/PyCharm CE.app/Contents/plugins/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
         exec(compile(contents+"\n", file, 'exec'), glob, loc)
-      File "/Users/val/python/pycharm/python-rules/nw/trans_tests/upd_order_reuse.py", line 136, in <module>
+      File "/Users/val/python/pycharm/logic-bank/nw/trans_tests/upd_order_reuse.py", line 136, in <module>
         assert False
     AssertionError
 
@@ -208,7 +208,7 @@ Good run:
 
     ..Customer[ALFKI] {starting} Address: Obere Str. 57, Balance: 960.0000000000, City: Berlin, CompanyName: Alfreds Futterkiste, ContactName: Maria Anders, ContactTitle: Sales Representative, Country: Germany, CreditLimit: 2000.0000000000, Fax: 030-0076545, Id: ALFKI, Phone: 030-0074321, PostalCode: 12209, Region: Western Europe  row@: 0x105074100 - 2020-09-20 19:36:30,581 - logic_logger - DEBUG
     ..Customer[ANATR] {starting} Address: Avda. de la Constitución 2222, Balance: 0E-10, City: México D.F., CompanyName: Ana Trujillo Emparedados y helados, ContactName: Ana Trujillo, ContactTitle: Owner, Country: Mexico, CreditLimit: 1000.0000000000, Fax: (5) 555-3745, Id: ANATR, Phone: (5) 555-4729, PostalCode: 05021, Region: Central America  row@: 0x105074970 - 2020-09-20 19:36:30,582 - logic_logger - DEBUG
-    /Users/val/python/pycharm/python-rules/venv/lib/python3.8/site-packages/sqlalchemy/sql/sqltypes.py:661: SAWarning: Dialect sqlite+pysqlite does *not* support Decimal objects natively, and SQLAlchemy must convert from floating point - rounding errors and other issues may occur. Please consider storing Decimal numbers as strings or integers on this platform for lossless storage.
+    /Users/val/python/pycharm/logic-bank/venv/lib/python3.8/site-packages/sqlalchemy/sql/sqltypes.py:661: SAWarning: Dialect sqlite+pysqlite does *not* support Decimal objects natively, and SQLAlchemy must convert from floating point - rounding errors and other issues may occur. Please consider storing Decimal numbers as strings or integers on this platform for lossless storage.
       util.warn(
     ..Order[11011] {starting} AmountTotal: 960.0000000000, CustomerId: ALFKI, EmployeeId: 3, Freight: 1.2100000000, Id: 11011, OrderDate: 2014-04-09, RequiredDate: 2014-05-07, ShipAddress: Obere Str. 57, ShipCity: Berlin, ShipCountry: Germany, ShipName: Alfred's Futterkiste, ShipPostalCode: 12209, ShipRegion: Western Europe, ShipVia: 1, ShippedDate: None  row@: 0x1050bbb50 - 2020-09-20 19:36:30,590 - logic_logger - DEBUG
 

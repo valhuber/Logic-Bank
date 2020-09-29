@@ -57,7 +57,7 @@ Depends on:
 
 More information:
 -----------------
-See the `python-rules github <https://github.com/valhuber/python-rules/wiki>`_
+See the `logic-bank github <https://github.com/valhuber/logic-bank/wiki>`_
 for more information, and explore the code.
 
 
