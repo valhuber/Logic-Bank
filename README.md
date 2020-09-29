@@ -4,8 +4,8 @@ and actions such as sending mail or messages). Logic consists of:
 
 * Rules - **40X** more concise than code, and
 
-* Python - standard function and event handler mechanisms
-for control and extensibility
+* Python - **control and extensibility,**
+using standard function and event handler mechanisms
 
 
 Features
