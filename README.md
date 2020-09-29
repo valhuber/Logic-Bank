@@ -178,7 +178,7 @@ the engine will reorganize execution order and database access, automatically
 ## Installation
 
 #### Contents
-This is the development project for `python-rules`:
+This is the development project for `login-bank`:
 * Explore project contents [here](../../wiki/Explore-Logic-Bank)
 * This project also includes a sample application
 used to test and illustrate rules.  Importantly,
@@ -187,8 +187,8 @@ it inclues comparisons of Business logic, both
 [by-rules,](../../wiki/by-rules)
 
 Stand-alone projects illustrating how to _use_
-`python-rules` can be found
-[here](https://github.com/valhuber/python-rules-examples).
+`logic_bank` can be found
+[here](https://github.com/valhuber/logic-bank-examples).
 These more closely resemble your use of `python-logic`,
 including usage of the `pip` mechanism to install.
 
