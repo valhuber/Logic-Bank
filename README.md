@@ -176,8 +176,19 @@ the engine will reorganize execution order and database access, automatically
 
 
 ## Installation
+Logic Bank has 2 projects: Logic Bank, and Logic Bank Examples
 
-#### Contents
+
+#### Logic Bank Examples
+[Logic-Bank-Examples](https://github.com/valhuber/logic-bank-examples)
+contains the same 2 samples, using a
+ `pip` version of Logic Bank, more closely resembling your use.
+
+#### Logic Bank
+This project is the development version, containing
+    - the engine
+    - two test databases - `nw` and `banking`
+
 This is the development project for `login-bank`:
 * Explore project contents [here](../../wiki/Explore-Logic-Bank)
 * This project also includes a sample application
@@ -186,13 +197,7 @@ it inclues comparisons of Business logic, both
 [by-code](../../wiki/by-code) and
 [by-rules,](../../wiki/by-rules)
 
-Stand-alone projects illustrating how to _use_
-`logic_bank` can be found
-[here](https://github.com/valhuber/logic-bank-examples).
-These more closely resemble your use of `python-logic`,
-including usage of the `pip` mechanism to install.
-
-#### Installation Procedure
+##### Installation Procedure
 To get started, you will need:
 
 * Python3.8 (Relies on `from __future__ import annotations`, so requires Python 3.8)
@@ -212,11 +217,12 @@ virtualenv venv
 source venv/bin/activate
 ```
 
-#### Testing
+##### Testing
 You can run the .py files under `nw/trans_tests`, and/or
 run the FAB application as described above.
 
-## Status: Running, Under Development
+
+##### Status: Running, Under Development
 Essential functions running on 9/6/2020:
 multi-table transactions -
 key paths of copy, formula, constraint, sum and event rules. 
