@@ -1,9 +1,11 @@
-This package enables you to declare rules that govern SQLAlchemy
+Logic Bank enables you to declare rules that govern SQLAlchemy
 update transaction logic (multi-table derivations, constraints,
-and actions such as sending mail or messages).
+and actions such as sending mail or messages). Logic consists of:
 
-Logic is stated in Python, and is over an **40X
-more concise than code.**
+* Rules - **40X** more concise than code, and
+
+* Python - standard function and event handler mechanisms
+for control and extensibility
 
 
 Features
@@ -20,7 +22,13 @@ Logic is declared in Python (example below), and is:
 - **Manageable:** develop and debug your rules in IDEs, manage it in SCS systems (such as `git`) using existing procedures
 
 
-For more information, [**see the Rules Engine Overview**](../../wiki/Home).
+For more information, [**see the Logic Bank Overview**](../../wiki/Home).
+
+Skeptical?  You should be.  Taking a rule-based approach to
+logic has serious implications for performance, quality and manageability.
+Unlike familiar rules engines, Logic Bank rules are specifically
+designed to be **scalable and extensible**
+[as explained here.](../../wiki/Rules-Engines)
 
 
 ## Architecture
@@ -35,7 +43,7 @@ For more information, [**see the Rules Engine Overview**](../../wiki/Home).
   is automatically shared, whether for hand-written code (Flask apps, APIs)
   or via generators such as Flask AppBuilder.
 
- 3. The **python-rules** logic engine handles sqlalchemy `before_flush` events on
+ 3. The **Rule Bank** logic engine handles sqlalchemy `before_flush` events on
 `Mapped Tables`
 
  4. The logic engine operates much like a spreadsheet:
