@@ -1,24 +1,47 @@
-This package enables you to declare rules that govern SQLAlchemy
-update transaction logic (multi-table derivations, constraints,
-and actions such as sending mail or messages).
+# Rules to Automate Business Logic 
+##### Transaction Logic: half the system
+For most transaction-oriented database applications, backend database logic
+is a substantial portion of the effort.
+It includes _multi-table_ derivation and constraint logic,
+and actions such as sending mail or messages.
 
-Logic is stated in Python, and is over an **40X
-more concise than code.**
+Such backend logic is typically coded in `before_flush` events,
+database triggers, and/or stored procedures.
+The prevailing assumption is that such *domain-specific logic must surely be 
+domain-specific code.*  
 
+##### Problem: Code-intensive - time-consuming, error prone
+The problem is that this is a lot of code.  Often nearly half the
+effort for a transactional database-oriented systems,
+it is time-consuming, complex and error-prone.
 
-Features
---------
+##### Rules: 40X more concise, extensible, performant, manageable
+This project introduces a _declarative alternative_:
+you specify a set of **_spreadsheet-like rules,_**
+which are then executed by a login engine operating
+as a plugin to sqlalchemy.  As in a spreadsheet,
+there are dramatic gains in conciseness and clarity:
 
-Logic is declared in Python (example below), and is:
+* **5 spreadsheet-like rules** implement the check-credit requirement (shown below).
+The same logic requires **200 hundred of lines** of code
+[(shown here)](../../wiki/by-code) - a factor of 40:1.
 
-- **Extensible:** logic consists of rules (see below), plus standard Python code
+* This can represent meaningful improvements in project delivery and agility.
+Experience has shown that such rules can address *over 95%* of
+the backend logic, reducing such logic by *40X*.
 
-- **Multi-table:** rules like `sum` automate multi-table transactions
+Skeptical?  You should be.  There are many types of rule engines,
+and experience has shown they are not appropriate to transaction processing.
+For more information, [see Rule Engines](../../wiki/Rules-Engines).
 
-- **Scalable:** rules are pruned and optimized; for example, sums are processed as *1 row adjustment updates,* rather than expensive SQL aggregate queries
-
-- **Manageable:** develop and debug your rules in IDEs, manage it in SCS systems (such as `git`) using existing procedures
-
+This implementation is specifically designed to meet
+the demands of transaction processing:
+* Scalable - rule execution is optimized to eliminate and optimize SQL
+* Extensible - use Python to extend rule automation
+* Manageable - use Python tools for code editing,
+debugging, code management, etc
+* Agile - iterate just by changing the rules; the system
+re-orders execution with automatic dependency management, and re-optimizes
 
 For more information, [**see the Rules Engine Overview**](../../wiki/Home).
 
@@ -120,8 +143,63 @@ The engine operates much as you might imagine a spreadsheet:
 * **Chain** - if recomputed values are referenced by still other rules,
 *these* are re-executed.  Note this can be in other tables, thus
 automating multi-table transaction logic.
+
+Let's see how.
    
-[Click here](../../wiki/Multi-Table-Logic-Execution)
+#### Example: Add Order - Multi-Table Adjustment, Chaining
+
+<figure><img src="images/check-credit.png" width="500"><figcaption>The <b>Add Order</b> example illustrates chaining as OrderDetails are added:
+</figcaption></figure>
+
+1. The `OrderDetail.UnitPrice` is referenced from the Product
+so it is copied
+
+1. OrderDetails are referenced by the Orders' `AmountTotal` sum rule,
+so `AmountTotal` is adjusted (chaining)
+
+1. The `AmountTotal` is referenced by the Customers' `Balance`,
+so it is adjusted (chaining)
+
+1. And the Credit Limit constraint is checked 
+(exceptions are raised if constraints are violated)
+
+All of the dependency management to see which attribute have changed,
+logic ordering, the SQL commands to read and adjust rows, and the chaining
+are fully automated by the engine, based solely on the rules above.
+This is how 5 rules represent the same logic as 200 lines of code.
+
+Let's explore the multi-table chaining, and how
+it's optimized.
+
+##### Optimizations: Multi-table _Adjustment_ (vs. nested `sum` queries)
+The `sum` rule that "watches" `OrderDetail.AmountTotal` is in
+a different table: `Orders`.  So, the "react" logic has to
+perform a multi-table transaction.  And this means we need to
+be careful about performance.
+
+Note that rules declare _end conditions_, enabling / _obligating_
+the engine to optimize execution (like a SQL query optimizer). 
+Consider the rule for `Customer.Balance`.
+
+As in commonly the case (e.g. Rete engines, some ORM systems),
+you may reasonably expect this is executed as a SQL `select sum`.
+
+**_It is not._**
+
+Instead, it is executed as an *adjustment:*
+as single row update to the Orders balance.
+This optimization dramatically reduces the SQL cost,
+often by orders of magnitude:
+
+  * `select sum` queries are expensive - imagine a customer with thousands of Orders.
+  
+  * Here, it's lots worse, since it's a _chained sum_,
+  so computing the balance requires not only we read all the orders,
+  but all the OrderDetails of each order.
+
+[See here](../../wiki/Multi-Table-Logic-Execution)
+for more information on Rule Execution.
+
 
 ## An Agile Perspective
 The core tenant of agile is _working software,_
