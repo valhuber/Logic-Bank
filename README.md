@@ -48,10 +48,10 @@ designed to be **scalable and extensible**
 `Mapped Tables`
 
  4. The logic engine operates much like a spreadsheet:
-* **watch** for changes at the attribute level
-* **react** by running rules that referenced changed attributes,
+    -  **watch** for changes at the attribute level
+    -  **react** by running rules that referenced changed attributes,
 which can
-* **chain** to still other attributes that refer to
+    - **chain** to still other attributes that refer to
 _those_ changes.  Note these might be in different tables,
 providing automation for _multi-table logic_.
 
