@@ -131,7 +131,7 @@ The engine operates much as you might imagine a spreadsheet:
 *these* are re-executed.  Note this can be in other tables, thus
 automating multi-table transaction logic.
    
-[Click here](../../wiki/Multi-Table-Logic-Execution)
+[Click here](../../wiki/Rules-Engines#Transaction-Rules)
 
 ## An Agile Perspective
 The core tenant of agile is _working software,_
@@ -184,7 +184,7 @@ Logic Bank has 2 projects: Logic Bank, and Logic Bank Examples
 contains the same 2 samples, using a
  `pip` version of Logic Bank, more closely resembling your use.
 
-#### Logic Bank
+#### Logic Bank (development version)
 This project is the development version, containing
     - the engine
     - two test databases - `nw` and `banking`
@@ -210,7 +210,7 @@ To get started, you will need:
 
 Issues?  [Try here](https://github.com/valhuber/fab-quick-start/wiki/Mac-Python-Install-Issues).
 
-Using your IDE or command line: 
+Install Logic Bank source and demo databases, using your IDE or command line: 
 ```
 cd your-project
 virtualenv venv
