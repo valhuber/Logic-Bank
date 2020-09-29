@@ -1,6 +1,6 @@
-Logic Bank enables you to declare rules that govern SQLAlchemy
-update transaction logic (multi-table derivations, constraints,
-and actions such as sending mail or messages). Logic consists of:
+Use Logic Bank to govern SQLAlchemy
+update transaction logic - multi-table derivations, constraints,
+and actions such as sending mail or messages. Logic consists of:
 
 * **Rules - 40X** more concise
 using a spreadsheet-like paradigm, and
@@ -12,13 +12,13 @@ using standard functions and event handlers
 Features
 --------
 
-Logic is declared in Python (example below), and is:
+Logic Bank is:
 
 - **Extensible:** logic consists of rules (see below), plus standard Python code
 
 - **Multi-table:** rules like `sum` automate multi-table transactions
 
-- **Scalable:** rules are pruned and optimized; for example, sums are processed as *1 row adjustment updates,* rather than expensive SQL aggregate queries
+- **Scalable:** rules are automatically pruned and optimized; for example, sums are processed as *1 row adjustment updates,* rather than expensive SQL aggregate queries
 
 - **Manageable:** develop and debug your rules in IDEs, manage it in SCS systems (such as `git`) using existing procedures
 
@@ -36,7 +36,7 @@ designed to be **scalable and extensible**
 <figure><img src="images/architecture.png" width="500"><figcaption>Architecture</figcaption></figure>
 
 
- 1. Your logic is **declared** as Python functions (see example below).
+ 1. **Declare** logic as Python functions (see example below).
 
  2. Your application makes calls on `sqlalchemy` for inserts, updates and deletes.
 
@@ -44,18 +44,19 @@ designed to be **scalable and extensible**
   is automatically shared, whether for hand-written code (Flask apps, APIs)
   or via generators such as Flask AppBuilder.
 
- 3. The **Rule Bank** logic engine handles sqlalchemy `before_flush` events on
+ 3. The **Logic Bank** engine handles sqlalchemy `before_flush` events on
 `Mapped Tables`
 
  4. The logic engine operates much like a spreadsheet:
-**watch** for changes at the attribute level,
-**react** by running rules that referenced changed attributes,
-which can **chain** to still other attributes that refer to
+* **watch** for changes at the attribute level
+* **react** by running rules that referenced changed attributes,
+which can
+* **chain** to still other attributes that refer to
 _those_ changes.  Note these might be in different tables,
 providing automation for _multi-table logic_.
 
-Logic does not apply to updates outside sqlalchemy,
-nor to sqlalchemy batch updates or unmapped sql updates.
+Logic does not apply to updates outside SQLAlchemy,
+nor to SQLAlchemy batch updates or unmapped sql updates.
 
 
 ## Declaring Logic as Spreadsheet-like Rules
