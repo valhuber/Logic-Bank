@@ -130,8 +130,10 @@ The engine operates much as you might imagine a spreadsheet:
 * **Chain** - if recomputed values are referenced by still other rules,
 *these* are re-executed.  Note this can be in other tables, thus
 automating multi-table transaction logic.
-   
-[Click here](../../wiki/Rules-Engines#transaction-rules)
+
+To see more on how __watch__, __react__ and __chain__ 
+logic operates for multi-table transactions,   
+[click here](../../wiki/Rules-Engines#multi-table-logic-execution).
 
 ## An Agile Perspective
 The core tenant of agile is _working software,_
