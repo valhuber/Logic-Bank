@@ -131,7 +131,7 @@ The engine operates much as you might imagine a spreadsheet:
 *these* are re-executed.  Note this can be in other tables, thus
 automating multi-table transaction logic.
    
-[Click here](../../wiki/Rules-Engines#Transaction-Rules)
+[Click here](../../wiki/Rules-Engines#transaction-rules)
 
 ## An Agile Perspective
 The core tenant of agile is _working software,_
