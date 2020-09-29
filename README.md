@@ -208,7 +208,7 @@ Here's how rules can help.
 
 ##### Working Software _Now_
 The examples above illustrate how just a few rules can replace 
-[pages of code](https://github.com/valhuber/python-rules/wiki/by-code).
+[pages of code](../../wiki/by-code).
 
 ##### Collaboration - Running Screens
 
@@ -251,8 +251,8 @@ This is the development project for `python-rules`:
 * This project also includes a sample application
 used to test and illustrate rules.  Importantly,
 it inclues comparisons of Business logic, both
-[by-code](https://github.com/valhuber/python-rules/wiki/by-code) and
-[by-rules,](https://github.com/valhuber/python-rules/wiki/by-rules)
+[by-code](../../wiki/by-code) and
+[by-rules,](../../wiki/by-rules)
 
 Stand-alone projects illustrating how to _use_
 `python-rules` can be found

@@ -14,11 +14,11 @@ Features
 
 Logic is declared in Python (example below), and is:
 
+- **Extensible:** logic consists of rules (see below), plus standard Python code
+
 - **Multi-table:** rules like `sum` automate multi-table transactions
 
 - **Scalable:** rules are pruned and optimized; for example, sums are processed as *1 row adjustment updates,* rather than expensive SQL aggregate queries
-
-- **Extensible:** use Python to implement any logic not addressed by rules
 
 - **Manageable:** develop and debug your rules in IDEs, manage it in SCS systems (such as `git`) using existing procedures
 
@@ -48,6 +48,13 @@ of Python:
         Rule.copy(derive=OrderDetail.UnitPrice, from_parent=Product.UnitPrice)
 
 
+To activate the rules declared above:
+
+.. code-block:: Python
+
+    rule_bank_setup.setup(session, engine)
+    activate_basic_check_credit_rules()
+    rule_bank_setup.validate(session, engine)  # checks for cycles, etc
 
 Depends on:
 -----------
@@ -72,4 +79,4 @@ Many thanks to
 Change Log
 ----------
 
-0.0.2 - fix imports
+0.0.1 - Initial Version
