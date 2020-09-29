@@ -2,10 +2,11 @@ Logic Bank enables you to declare rules that govern SQLAlchemy
 update transaction logic (multi-table derivations, constraints,
 and actions such as sending mail or messages). Logic consists of:
 
-* Rules - **40X** more concise than code, and
+* **Rules - 40X** more concise
+using a spreadsheet-like paradigm, and
 
-* Python - **control and extensibility,**
-using standard function and event handler mechanisms
+* **Python - control and extensibility,**
+using standard functions and event handlers
 
 
 Features
