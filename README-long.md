@@ -196,8 +196,9 @@ often by orders of magnitude:
   so computing the balance requires not only we read all the orders,
   but all the OrderDetails of each order.
 
-[See here](../../wiki/Multi-Table-Logic-Execution)
-for more information on Rule Execution.
+To see more on how __watch__, __react__ and __chain__ 
+logic operates for multi-table transactions,   
+[click here](../../wiki/Rules-Engines#multi-table-logic-execution).
 
 
 #### Example: Ship Order - Pruning, Adjustment and Cascade

@@ -178,58 +178,29 @@ the engine will reorganize execution order and database access, automatically
 
 
 ## Installation
-Logic Bank has 2 projects: Logic Bank, and Logic Bank Examples
-
-
-#### Logic Bank Examples
-[Logic-Bank-Examples](https://github.com/valhuber/logic-bank-examples)
-contains the same 2 samples, using a
- `pip` version of Logic Bank, more closely resembling your use.
-
-#### Logic Bank (development version)
-This project is the development version, containing
-    - the engine
-    - two test databases - `nw` and `banking`
-
-This is the development project for `login-bank`:
-* Explore project contents [here](../../wiki/Explore-Logic-Bank)
-* This project also includes a sample application
-used to test and illustrate rules.  Importantly,
-it inclues comparisons of Business logic, both
+Logic Bank has 2 projects: `Logic Bank`, and `Logic Bank Examples`.
+They have a number of elements in common:
+* They both have copies of two test databases - `nw` and `banking`.
+* The `nw` sample illustrates comparisons of Business logic, both
 [by-code](../../wiki/by-code) and
 [by-rules,](../../wiki/by-rules)
 
-##### Installation Procedure
-To get started, you will need:
+They differ in how the logic engine is installed:
+* `Logic Bank` - logic engine source is included
 
-* Python3.8 (Relies on `from __future__ import annotations`, so requires Python 3.8)
+    * Click [here](../../wiki/Explore-Logic-Bank)
+    for install / operations procedures
+    
+* `Logic Bank Examples`
 
-   * Run the windows installer; on mac/Unix, consider [using brew](https://opensource.com/article/19/5/python-3-default-mac#what-to-do)
-   
-* virtualenv - see [here](https://www.google.com/url?q=https%3A%2F%2Fpackaging.python.org%2Fguides%2Finstalling-using-pip-and-virtual-environments%2F%23creating-a-virtual-environment&sa=D&sntz=1&usg=AFQjCNEu-ZbYfqRMjNQ0D0DqU1mhFpDYmw)  (e.g.,  `pip install virtualenv`)
+    * Click [here](../../wiki/Sample-Project---Setup)
+    to see install instructions for creating
+        your own projects
 
-* An IDE - any will do (I've used [PyCharm](https://www.jetbrains.com/pycharm/download) and [VSCode](https://code.visualstudio.com), install notes [here](https://github.com/valhuber/fab-quick-start/wiki/IDE-Setup)) - ide will do, though different install / generate / run instructions apply for running programs
-
-Issues?  [Try here](https://github.com/valhuber/fab-quick-start/wiki/Mac-Python-Install-Issues).
-
-Install Logic Bank source and demo databases, using your IDE or command line: 
-```
-cd your-project
-virtualenv venv
-source venv/bin/activate
-```
-
-##### Testing
-You can run the .py files under `nw/trans_tests`, and/or
-run the FAB application as described above.
 
 
 ##### Status: Running, Under Development
-Essential functions running on 9/6/2020:
-multi-table transactions -
-key paths of copy, formula, constraint, sum and event rules. 
+Functionally complete, 9/29/2020, tested for 2 databases.
 
-Not complete, under active development.
-
-Ready to explore and provide feedback
+Incubation - ready to explore and provide feedback
 on general value, and features.
