@@ -69,6 +69,11 @@ For those not familiar, this is basically
 Customers, Orders, OrderDetails and Products,
 as shown in the diagrams below.
 
+#### Install the Logic Bank
+```
+pip install -i https://test.pypi.org/simple/ logic-bank
+```
+
 ##### Declare rules using Python
 Logic is declared as spreadsheet-like rules as shown below
 from  [`nw/nw_logic/nw_rules_bank.py`](nw/nw_logic/nw_rules_bank.py),
