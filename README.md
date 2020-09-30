@@ -124,7 +124,8 @@ if by_rules:
 else:
     # ... conventional after_flush listeners (to see rules/code contrast)
 ```
-This is what replaces 200 lines of conventional code.  Let's see how it operates.
+This is what replaces 200 lines of [conventional code.](../../wiki/y-code)
+Let's see how it operates.
 
 ## Logic Execution: Watch, React, Chain
 
@@ -199,10 +200,13 @@ these both contain
 
     * [Databases](nw) sqlite - no install required
 
-    * Test folders than run key transactions - just run the scripts
+    * [Test folders](nw/trans_tests) than run key transactions - just run the scripts
 (note the logs)
 
-    * Flask AppBuilder apps (as described above)
+    * [Flask AppBuilder apps](nw_app) (as described above)
+    
+    * [Logic](nw_logic) - models and rules (and, for `'nw',
+    the manual code for constrast to rules)
     
 * The `nw` sample illustrates comparisons of Business logic, both
 [by code](../../wiki/by-code) and by rules (shown above).
