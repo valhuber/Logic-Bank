@@ -2,18 +2,18 @@
 """
 Fab QuickStart 0.1.2
 
-Current Working Directory: /Users/tylerband/git/fab-quick-start/nw-app
+Current Working Directory: /Users/val/python/pycharm/Logic-Bank/banking_app
 
-From: /Users/tylerband/git/fab-quick-start/banking_logic/venv/bin/fab-quick-start
+From: /Users/val/python/pycharm/Logic-Bank/venv/bin/fab-quick-start
 
-Using Python: 3.7.3 (default, Aug 16 2020, 10:27:01)
-[Clang 11.0.0 (clang-1100.0.33.17)]
+Using Python: 3.8.3 (default, Aug  5 2020, 16:59:52) 
+[Clang 11.0.3 (clang-1103.0.32.62)]
 
 Favorites: ['name', 'description']
 
 Non Favorites: ['id']
 
-At: 2020-09-24 17:11:04.278549
+At: 2020-09-30 08:07:52.451524
 
 """
 
@@ -25,7 +25,7 @@ from .models import *
 
 
 
-class Valid_Acct_TypeModelView(ModelView):
+class ValidAcctTypeModelView(ModelView):
    datamodel = SQLAInterface(ValidAcctType)
    list_columns = ["AcctDescription", "AcctType"]
    show_columns = ["AcctDescription", "AcctType"]
@@ -34,55 +34,59 @@ class Valid_Acct_TypeModelView(ModelView):
    related_views = []
 
 appbuilder.add_view(
-      Valid_Acct_TypeModelView, "Valid_Acct_Type List", icon="fa-folder-open-o", category="Menu")
+      ValidAcctTypeModelView, "ValidAcctType List", icon="fa-folder-open-o", category="Menu")
 
 
 
 
 
-class CHECKING_TRANSModelView(ModelView):
-   datamodel = SQLAInterface(CHECKINGTRAN)
-   list_columns = ["TransId", "CHECKING.AcctNum", "AcctNum", "CustNum", "Total"]
-   show_columns = ["TransId", "CHECKING.AcctNum", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total", "ChkNo", "ImageURL"]
-   edit_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt",  "ChkNo", "ImageURL"]
-   add_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "ChkNo", "ImageURL"]
-   related_views = []
-
-appbuilder.add_view(
-      CHECKING_TRANSModelView, "CHECKINGTRANS List", icon="fa-folder-open-o", category="Menu")
-
-
-# table already generated per recursion: CHECKINGTRANS
-
-
-class CHECKINGModelView(ModelView):
-   datamodel = SQLAInterface(CHECKING)
-   list_columns = ["AcctNum", "CUSTOMER.Name", "valid_credit.creditCode", "CustNum", "Deposits","Withdrawls", "AvailableBalance"]
-   show_columns = ["AcctNum", "CUSTOMER.Name", "valid_credit.creditCode", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "CreditCode", "CreditLimit", "AcctType"]
-   edit_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "CreditCode", "CreditLimit", "AcctType"]
-   add_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "CreditCode", "CreditLimit", "AcctType"]
-   related_views = [CHECKING_TRANSModelView, CHECKING_TRANSModelView]
-
-appbuilder.add_view(
-      CHECKINGModelView, "CHECKING List", icon="fa-folder-open-o", category="Menu")
-
-
-
-
-
-class valid_creditModelView(ModelView):
+class ValidCreditModelView(ModelView):
    datamodel = SQLAInterface(ValidCredit)
    list_columns = ["creditCode", "displayValue", "MaxCreditLimit"]
    show_columns = ["creditCode", "displayValue", "MaxCreditLimit"]
    edit_columns = ["creditCode", "displayValue", "MaxCreditLimit"]
    add_columns = ["creditCode", "displayValue", "MaxCreditLimit"]
-   related_views = [CHECKINGModelView]
+   related_views = []
 
 appbuilder.add_view(
-      valid_creditModelView, "valid_credit List", icon="fa-folder-open-o", category="Menu")
+      ValidCreditModelView, "ValidCredit List", icon="fa-folder-open-o", category="Menu")
 
 
 
+
+
+class ValidStateModelView(ModelView):
+   datamodel = SQLAInterface(ValidState)
+   list_columns = ["stateName", "stateCode"]
+   show_columns = ["stateName", "stateCode"]
+   edit_columns = ["stateName", "stateCode"]
+   add_columns = ["stateName", "stateCode"]
+   related_views = []
+
+appbuilder.add_view(
+      ValidStateModelView, "ValidState List", icon="fa-folder-open-o", category="Menu")
+
+
+
+
+
+class TRANSFERFUNDModelView(ModelView):
+   datamodel = SQLAInterface(TRANSFERFUND)
+   list_columns = ["TransId", "CUSTOMER.Name", "FromAcct", "FromCustNum", "ToAcct"]
+   show_columns = ["TransId", "CUSTOMER.Name", "FromAcct", "FromCustNum", "ToAcct", "ToCustNum", "TransferAmt", "TransDate"]
+   edit_columns = ["TransId", "FromAcct", "FromCustNum", "ToAcct", "ToCustNum", "TransferAmt", "TransDate"]
+   add_columns = ["TransId", "FromAcct", "FromCustNum", "ToAcct", "ToCustNum", "TransferAmt", "TransDate"]
+   related_views = []
+
+appbuilder.add_view(
+      TRANSFERFUNDModelView, "TRANSFERFUND List", icon="fa-folder-open-o", category="Menu")
+
+
+
+
+
+
+# table already generated per recursion: TRANSFERFUND
 
 
 class ALERTModelView(ModelView):
@@ -97,111 +101,134 @@ appbuilder.add_view(
       ALERTModelView, "ALERT List", icon="fa-folder-open-o", category="Menu")
 
 
-# table already generated per recursion: CHECKING
 
 
-class LOC_TRANSACTIONSModelView(ModelView):
+
+class CHECKINGTRANSModelView(ModelView):
+   datamodel = SQLAInterface(CHECKINGTRANS)
+   list_columns = ["TransId", "CHECKING.AcctNum", "AcctNum", "CustNum", "TransDate"]
+   show_columns = ["TransId", "CHECKING.AcctNum", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total", "ChkNo", "ImageURL"]
+   edit_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total", "ChkNo", "ImageURL"]
+   add_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total", "ChkNo", "ImageURL"]
+   related_views = []
+
+appbuilder.add_view(
+      CHECKINGTRANSModelView, "CHECKINGTRANS List", icon="fa-folder-open-o", category="Menu")
+
+
+# table already generated per recursion: CHECKINGTRANS
+
+
+class CHECKINGModelView(ModelView):
+   datamodel = SQLAInterface(CHECKING)
+   list_columns = ["AcctNum", "CUSTOMER.Name", "CustNum", "Deposits", "Withdrawls"]
+   show_columns = ["AcctNum", "CUSTOMER.Name", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "CreditCode", "CreditLimit", "AcctType"]
+   edit_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "CreditCode", "CreditLimit", "AcctType"]
+   add_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "CreditCode", "CreditLimit", "AcctType"]
+   related_views = [CHECKINGTRANSModelView, CHECKINGTRANSModelView]
+
+appbuilder.add_view(
+      CHECKINGModelView, "CHECKING List", icon="fa-folder-open-o", category="Menu")
+
+
+
+
+
+class LOCTRANSACTIONModelView(ModelView):
    datamodel = SQLAInterface(LOCTRANSACTION)
-   list_columns = ["TransId", "LINE_OF_CREDIT.CustNum", "TransDate", "PaymentAmt", "ChargeAmt"]
-   show_columns = ["TransId", "LINE_OF_CREDIT.CustNum", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
+   list_columns = ["TransId", "LINEOFCREDIT.CustNum", "TransDate", "PaymentAmt", "ChargeAmt"]
+   show_columns = ["TransId", "LINEOFCREDIT.CustNum", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
    edit_columns = ["TransId", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
    add_columns = ["TransId", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
    related_views = []
 
 appbuilder.add_view(
-      LOC_TRANSACTIONSModelView, "LOC_TRANSACTIONS List", icon="fa-folder-open-o", category="Menu")
+      LOCTRANSACTIONModelView, "LOCTRANSACTION List", icon="fa-folder-open-o", category="Menu")
 
 
-# table already generated per recursion: LOC_TRANSACTIONS
+# table already generated per recursion: LOCTRANSACTION
+
+""" val - ??
+class LOCTRANSACTIONSModelView(ModelView):
+   datamodel = SQLAInterface(LOCTRANSACTIONS)
+   list_columns = ["TransId", "LINEOFCREDIT.CustNum", "TransDate", "PaymentAmt", "ChargeAmt"]
+   show_columns = ["TransId", "LINEOFCREDIT.CustNum", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
+   edit_columns = ["TransId", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
+   add_columns = ["TransId", "TransDate", "PaymentAmt", "ChargeAmt", "ChargeType", "CustNum", "AcctNum"]
+   related_views = []
+
+appbuilder.add_view(
+      LOCTRANSACTIONSModelView, "LOCTRANSACTIONS List", icon="fa-folder-open-o", category="Menu")
+
+"""
+# table already generated per recursion: LOCTRANSACTIONS
 
 
-class LINE_OF_CREDITModelView(ModelView):
+class LINEOFCREDITModelView(ModelView):
    datamodel = SQLAInterface(LINEOFCREDIT)
    list_columns = ["CustNum", "CUSTOMER.Name", "AcctNum", "OverdaftFeeAmt", "LineOfCreditAmt"]
    show_columns = ["CustNum", "CUSTOMER.Name", "AcctNum", "OverdaftFeeAmt", "LineOfCreditAmt", "TotalCharges", "TotalPayments", "AvailableBalance", "Id"]
    edit_columns = ["CustNum", "AcctNum", "OverdaftFeeAmt", "LineOfCreditAmt", "TotalCharges", "TotalPayments", "AvailableBalance", "Id"]
    add_columns = ["CustNum", "AcctNum", "OverdaftFeeAmt", "LineOfCreditAmt", "TotalCharges", "TotalPayments", "AvailableBalance", "Id"]
-   related_views = [LOC_TRANSACTIONSModelView, LOC_TRANSACTIONSModelView]
+   related_views = [LOCTRANSACTIONModelView]
 
 appbuilder.add_view(
-      LINE_OF_CREDITModelView, "LINE_OF_CREDIT List", icon="fa-folder-open-o", category="Menu")
+      LINEOFCREDITModelView, "LINEOFCREDIT List", icon="fa-folder-open-o", category="Menu")
 
 
 
 
 
-class SAVINGS_TRANSModelView(ModelView):
-   datamodel = SQLAInterface(SAVINGSTRAN)
-   list_columns = ["TransId", "SAVINGS.AcctNum", "AcctNum", "CustNum", "Total"]
-   show_columns = ["TransId", "SAVINGS.AcctNum", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total"]
-   edit_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt"]
-   add_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt"]
+class SAVINGSTRANSModelView(ModelView):
+   datamodel = SQLAInterface(SAVINGSTRANS)
+   list_columns = ["TransId", "SAVING.AcctNum", "AcctNum", "CustNum", "TransDate"]
+   show_columns = ["TransId", "SAVING.AcctNum", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total"]
+   edit_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total"]
+   add_columns = ["TransId", "AcctNum", "CustNum", "TransDate", "DepositAmt", "WithdrawlAmt", "Total"]
    related_views = []
 
 appbuilder.add_view(
-      SAVINGS_TRANSModelView, "SAVINGSTRANS List", icon="fa-folder-open-o", category="Menu")
+      SAVINGSTRANSModelView, "SAVINGSTRANS List", icon="fa-folder-open-o", category="Menu")
 
 
 # table already generated per recursion: SAVINGSTRANS
 
 
-class SAVINGSModelView(ModelView):
+class SAVINGModelView(ModelView):
    datamodel = SQLAInterface(SAVING)
-   list_columns = ["AcctNum", "CUSTOMER.Name", "CustNum", "Deposits", "Withdrawls",  "AvailableBalance"]
+   list_columns = ["AcctNum", "CUSTOMER.Name", "CustNum", "Deposits", "Withdrawls"]
    show_columns = ["AcctNum", "CUSTOMER.Name", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "AcctType"]
-   edit_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "AcctType"]
-   add_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls",  "AcctType"]
-   related_views = [SAVINGS_TRANSModelView, SAVINGS_TRANSModelView]
+   edit_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "AcctType"]
+   add_columns = ["AcctNum", "CustNum", "Deposits", "Withdrawls", "CurrentBalance", "AvailableBalance", "ItemCount", "AcctType"]
+   related_views = [SAVINGSTRANSModelView, SAVINGSTRANSModelView]
 
 appbuilder.add_view(
-      SAVINGSModelView, "SAVINGS List", icon="fa-folder-open-o", category="Menu")
+      SAVINGModelView, "SAVING List", icon="fa-folder-open-o", category="Menu")
 
 
 
-
-
-class TRANSFER_FUNDSModelView(ModelView):
-   datamodel = SQLAInterface(TRANSFERFUND)
-   list_columns = ["TransId", "CUSTOMER.Name", "FromAcct", "FromCustNum", "ToAcct"]
-   show_columns = ["TransId", "CUSTOMER.Name", "FromAcct", "FromCustNum", "ToAcct", "ToCustNum", "TransferAmt", "TransDate"]
-   edit_columns = ["TransId", "FromAcct", "FromCustNum", "ToAcct", "ToCustNum", "TransferAmt", "TransDate"]
-   add_columns = ["TransId", "FromAcct", "FromCustNum", "ToAcct", "ToCustNum", "TransferAmt", "TransDate"]
-   related_views = []
-
-appbuilder.add_view(
-      TRANSFER_FUNDSModelView, "TRANSFER_FUNDS List", icon="fa-folder-open-o", category="Menu")
-
-
-# table already generated per recursion: TRANSFER_FUNDS
 
 
 class CUSTOMERModelView(ModelView):
    datamodel = SQLAInterface(CUSTOMER)
-   list_columns = ["Name", "valid_state.stateName", "CustNum", "CheckingAcctBal", "SavingsAcctBal", "TotalBalance"]
-   show_columns = ["Name", "valid_state.stateName", "CustNum", "Street", "City", "State", "ZIP", "Phone", "emailAddress", "CheckingAcctBal", "SavingsAcctBal", "TotalBalance"]
-   edit_columns = ["Name", "CustNum", "Street", "City", "State", "ZIP", "Phone", "emailAddress"]
-   add_columns = ["Name", "CustNum", "Street", "City", "State", "ZIP", "Phone", "emailAddress"]
-   related_views = [ALERTModelView, CHECKINGModelView, LINE_OF_CREDITModelView, SAVINGSModelView, TRANSFER_FUNDSModelView, TRANSFER_FUNDSModelView]
+   list_columns = ["Name", "CustNum", "CheckingAcctBal", "SavingsAcctBal", "TotalBalance"]
+   show_columns = ["Name", "CustNum", "CheckingAcctBal", "SavingsAcctBal", "TotalBalance", "Street", "City", "State", "ZIP", "Phone", "emailAddress"]
+   edit_columns = ["Name", "CustNum", "CheckingAcctBal", "SavingsAcctBal", "TotalBalance", "Street", "City", "State", "ZIP", "Phone", "emailAddress"]
+   add_columns = ["Name", "CustNum", "CheckingAcctBal", "SavingsAcctBal", "TotalBalance", "Street", "City", "State", "ZIP", "Phone", "emailAddress"]
+   related_views = [TRANSFERFUNDModelView, TRANSFERFUNDModelView, ALERTModelView, CHECKINGModelView, LINEOFCREDITModelView, SAVINGModelView]
 
 appbuilder.add_view(
       CUSTOMERModelView, "CUSTOMER List", icon="fa-folder-open-o", category="Menu")
 
 
-
-
-
-class valid_stateModelView(ModelView):
-   datamodel = SQLAInterface(ValidState)
-   list_columns = ["stateName", "stateCode"]
-   show_columns = ["stateName", "stateCode"]
-   edit_columns = ["stateName", "stateCode"]
-   add_columns = ["stateName", "stateCode"]
-   related_views = [CUSTOMERModelView]
-
-appbuilder.add_view(
-      valid_stateModelView, "valid_state List", icon="fa-folder-open-o", category="Menu")
-
-
-# table already generated per recursion: CUSTOMER# table already generated per recursion: ALERT# table already generated per recursion: CHECKING# table already generated per recursion: LINE_OF_CREDIT# table already generated per recursion: SAVINGS# table already generated per recursion: TRANSFER_FUNDS# table already generated per recursion: CHECKINGTRANS# table already generated per recursion: LOC_TRANSACTIONS# table already generated per recursion: SAVINGSTRANS#  12 table(s) in model; generated 12 page(s), including 6 related_view(s).
+# table already generated per recursion: ALERT# table already generated per recursion: CHECKING# table already generated per recursion: LINEOFCREDIT# table already generated per recursion: SAVING# table already generated per recursion: CHECKINGTRANS# table already generated per recursion: LOCTRANSACTION# table already generated per recursion: SAVINGSTRANS# table already generated per recursion: LOCTRANSACTIONS# skip admin table: ab_permission
+# skip admin table: ab_permission_view
+# skip admin table: ab_view_menu
+# skip admin table: ab_permission_view_role
+# skip admin table: ab_role
+# skip admin table: ab_register_user
+# skip admin table: ab_user
+# skip admin table: ab_user_role
+#  21 table(s) in model; generated 14 page(s), including 4 related_view(s).
 
 
