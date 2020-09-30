@@ -127,23 +127,13 @@ else:
 This is what replaces 200 lines of [conventional code.](../../wiki/by-code)
 Let's see how it operates.
 
-## Logic Execution: Watch, React, Chain
-
-As described above, the logic engine listens to  updates,
-__watching__ for changes, and __reacts__ by running
-relevant rules.  __Chaining__ means that
-other rows might be updated, e.g., adding an Order adjusts
-the Customer Balance and checks the CreditLimit -- multi-table logic.
-
-To see more on how __watch__, __react__ and __chain__ 
-logic automates and optimizes multi-table transactions,
-[click here](../../wiki/Rules-Engines#multi-table-logic-execution).
-
-   
-#### Example: Add Order - Multi-Table Adjustment, Chaining
+## Logic Execution: Add Order - Watch, React, Chain
 
 <figure><img src="images/check-credit.png" width="500"><figcaption>The <b>Add Order</b> example illustrates chaining as OrderDetails are added:
 </figcaption></figure>
+
+Let's see how __Watch / React / Chain__ operates to
+check the balance when adding an order:
 
 1. The `OrderDetail.UnitPrice` is referenced from the Product
 so it is copied
@@ -160,9 +150,15 @@ so it is adjusted
 All of the dependency management to see which attribute have changed,
 logic ordering, the SQL commands to read and adjust rows, and the chaining
 are fully automated by the engine, based solely on the rules above.
+
+Reuse over Use Cases is automatic, so the same rules
+automate deleting and updating orders.
 This is how 5 rules represent the same logic as 200 lines of code.
 
-Key points are discussed in the sub-sections below.
+To see more on how __watch__, __react__ and __chain__ 
+logic automates and optimizes multi-table transactions,
+[click here](../../wiki/Rules-Engines#multi-table-logic-execution).
+
 
 
 ## An Agile Perspective
