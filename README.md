@@ -124,7 +124,7 @@ if by_rules:
 else:
     # ... conventional after_flush listeners (to see rules/code contrast)
 ```
-This is what replaces 200 lines of [conventional code.](../../wiki/y-code)
+This is what replaces 200 lines of [conventional code.](../../wiki/by-code)
 Let's see how it operates.
 
 ## Logic Execution: Watch, React, Chain
