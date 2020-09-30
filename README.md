@@ -127,16 +127,11 @@ else:
 This is what replaces 200 lines of conventional code.  Let's see how it operates.
 
 ## Logic Execution: Watch, React, Chain
-The engine operates much as you might imagine a spreadsheet:
 
-* **Watch** - for inserts, deletes, and updates at the *attribute* level
-
-* **React** - derivation rules referencing changes are (re)executed
-(forward chaining *rule inference*); unreferenced rules are pruned.
-
-* **Chain** - if recomputed values are referenced by still other rules,
-*these* are re-executed.  Note this can be in other tables, thus
-automating multi-table transaction logic.
+As described above, the logic engine listens to  normal updates,
+and executes the relevant rules.  Chaining means that
+other rows might be updated, e.g., adding an Order adjusts
+the Customer Balance and checks the CreditLimit -- multi-table logic.
 
 To see more on how __watch__, __react__ and __chain__ 
 logic operates for multi-table transactions,   
@@ -158,7 +153,7 @@ read rules than code.  But honestly, rules are
 pretty abstract.
 
 Business users relate best to actual working pages -
-_their_ intepretation of working software.
+_their_ interpretation of working software.
 The [fab-quick-start](https://github.com/valhuber/fab-quick-start/wiki)
 project enables you to build a basic web app in minutes.
 
