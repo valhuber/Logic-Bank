@@ -54,8 +54,8 @@ class Constraint(AbstractRule):
             row = logic_row.row
             msg = eval(f'f"""{self._error_msg}"""')
             from sqlalchemy import exc
-            exception = exc.DBAPIError(msg, None, None)  # 'statement', 'params', and 'orig'
-            raise  exception
+            # exception = exc.DBAPIError(msg, None, None)  # 'statement', 'params', and 'orig'
+            raise Exception(msg)
         else:
             raise Exception(f'Constraint did not return boolean: {str(self)}')
         logic_row.log_engine(f'Constraint END {str(self)} on {str(logic_row)}')

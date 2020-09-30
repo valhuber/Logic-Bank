@@ -29,11 +29,11 @@ if use_rules:
               required_path_python_rules)
 
     import nw.nw_logic.models as models
-    from python_rules.util import row_prt, prt
+    from logic_bank.util import row_prt, prt
     from nw.nw_logic import session  # opens db, activates logic listener <--
 
-    from python_rules.rule_bank import rule_bank_withdraw  # required to avoid circular imports
-    from python_rules.rule_bank import rule_bank_setup
+    from logic_bank.rule_bank import rule_bank_withdraw  # required to avoid circular imports
+    from logic_bank.rule_bank import rule_bank_setup
     from nw.nw_logic import activate_basic_check_credit_rules
 
 """
