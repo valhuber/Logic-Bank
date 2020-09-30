@@ -366,6 +366,11 @@ class LogicRow:
                 if is_foreign_key_null(each_relationship) is False:
                     # continue
                     self.get_parent_logic_row(parent_role_name)  # sets the accessor
+                    does_parent_exist = getattr(self.row, parent_role_name)
+                    if not does_parent_exist:
+                        msg = "Missing Parent: " + parent_role_name
+                        self.log(msg)
+                        raise Exception(msg)
         return self
 
     def adjust_parent_aggregates(self):

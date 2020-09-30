@@ -6,7 +6,7 @@ from banking.banking_logic import session  # opens db, activates logic listener 
 
 trans_date = datetime.datetime(2020, 10, 1)
 withdrawl = models.SAVINGSTRANS(TransId=101, CustNum=2, AcctNum=3, DepositAmt=10, WithdrawlAmt=0, TransDate=trans_date)
-print("\n\n - withdraw funds from checking trans: " + str(withdrawl))
+print("\n\n - withdraw funds from checking trans (without savings?): " + str(withdrawl))
 session.add(withdrawl)
 
 deposit = models.CHECKINGTRANS(TransId=101,CustNum=2, AcctNum=2,
