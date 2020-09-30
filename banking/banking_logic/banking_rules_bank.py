@@ -17,7 +17,7 @@ def activate_basic_rules():
     Rule.formula(derive=CUSTOMER.TotalBalance, as_expression=lambda row: row.CheckingAcctBal + row.SavingsAcctBal)
     Rule.constraint(validate=CUSTOMER,
                     as_condition=lambda row: row.TotalBalance >= 0,
-                    error_msg="You balance ({row.TotalBalance}) is less than 0)")
+                    error_msg="Your balance of ({row.TotalBalance}) is less than 0)")
 
     Rule.sum(derive=SAVING.Withdrawls, as_sum_of=SAVINGSTRANS.WithdrawlAmt)
     Rule.sum(derive=SAVING.Deposits, as_sum_of=SAVINGSTRANS.DepositAmt)

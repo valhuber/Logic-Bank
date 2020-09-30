@@ -1,14 +1,16 @@
 INSERT INTO `ALERT` VALUES (1,1,1,1000.00,0.00,'tylerm007@gmail.com');
 
-INSERT INTO `CHECKING` VALUES (1,1,0.00,0.00,0.00,0.00,0,1,1000.00,'C'),(2,2,0.00,0.00,0.00,0.00,0,1,0.00,'C');
-
-INSERT INTO `CHECKINGTRANS` VALUES (100,2,2,'2020-10-01 00:00:00',1000.00,0.00,1000.00,NULL,NULL);
-
-INSERT INTO `CUSTOMER` VALUES (1,'Tyler Band',0.00,0.00,0.00,'1521 N BEACH ST','ORMOND BEACH','FL',32174,'4076078094','tyler.band@broadcom.com'),(2,'Tyler',0.00,0.00,0.00,'123 main','Ormond','FL',32751,NULL,NULL);
+INSERT INTO `CUSTOMER` VALUES (1,'Tyler Bank',0.00,0.00,0.00,'1234 N BEACH ST','Daytona Beach','FL',32174,'5556078094','tyler.bank@acme.com');
 
 INSERT INTO `LINEOFCREDIT` VALUES (1,1,35.00,1000.00,0.00,0.00,0.00,1);
 
-INSERT INTO `SAVINGS` VALUES (1,1,0.00,0.00,0.00,0.00,0,'S');
+INSERT INTO `CHECKING` VALUES (1,1,0.00,0.00,0.00,0.00,0,1,1000.00,'C');
+
+INSERT INTO `SAVINGS` VALUES (1,2,0.00,0.00,0.00,0.00,0,'S');
+
+INSERT INTO `CHECKINGTRANS` VALUES (100,1,1,'2020-10-01 00:00:00',1000.00,0.00,1000.00,NULL,NULL);
+
+INSERT INTO `SAVINGSTRANS` VALUES (100,1,1,'2020-10-01 00:00:00',500.00,0.00,1000.00,NULL,NULL);
 
 INSERT INTO `ab_permission` VALUES (8,'can_add'),(15,'can_chart'),(7,'can_delete'),(5,'can_download'),(9,'can_edit'),(16,'can_get'),(6,'can_list'),(4,'can_show'),(1,'can_this_form_get'),(2,'can_this_form_post'),(3,'can_userinfo'),(14,'copyrole'),(13,'menu_access'),(10,'resetmypassword'),(11,'resetpasswords'),(12,'userinfoedit');
 
