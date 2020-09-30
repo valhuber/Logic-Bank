@@ -185,26 +185,37 @@ the engine will reorganize execution order and database access, automatically
 
 
 ## Installation
-Logic Bank has 2 projects: `Logic Bank`, and `Logic Bank Examples`.
+Logic Bank consists of 2 project repositories:
+`Logic Bank` (this project), and `Logic Bank Examples.`
 They have a number of elements in common:
-* They both have copies of two test databases - `nw` and `banking`.
+
+* They both have copies of two test database systems - `nw` and `banking`;
+these both contain
+
+    * Databases sqlite - no install required
+
+    * Test folders than run key transactions - just run the scripts
+(note the logs)
+
+    * Flask AppBuilder apps (as described above)
+    
 * The `nw` sample illustrates comparisons of Business logic, both
 [by code](../../wiki/by-code) and by rules (shown above).
 
 They differ in how the logic engine is installed:
-* `Logic Bank` - logic engine source is included
+* `Logic Bank` - this project
 
+    * Includes Logic Bank source code and documentation
+    
     * Click [here](../../wiki/Explore-Logic-Bank)
     for install / operations procedures
     
     * Click [here](../../wiki/Logic-Walkthrough) for a
     short overview of internal logic execution
     
-* `Logic Bank Examples`
+* `Logic Bank Examples` - [here](../../wiki/Sample-Project---Setup)
 
-    * Click [here](../../wiki/Sample-Project---Setup)
-    to see install instructions for creating
-        your own projects
+    * Install instructions for creating your own projects
 
 
 
