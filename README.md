@@ -192,6 +192,9 @@ They differ in how the logic engine is installed:
     * Click [here](../../wiki/Explore-Logic-Bank)
     for install / operations procedures
     
+    * Click [here](../../wiki/Logic-Walkthrough) for a
+    short overview of internal logic execution
+    
 * `Logic Bank Examples`
 
     * Click [here](../../wiki/Sample-Project---Setup)
