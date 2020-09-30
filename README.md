@@ -128,13 +128,14 @@ This is what replaces 200 lines of conventional code.  Let's see how it operates
 
 ## Logic Execution: Watch, React, Chain
 
-As described above, the logic engine listens to  normal updates,
-and executes the relevant rules.  Chaining means that
+As described above, the logic engine listens to  updates,
+__watching__ for changes, and __reacts__ by running
+relevant rules.  __Chaining__ means that
 other rows might be updated, e.g., adding an Order adjusts
 the Customer Balance and checks the CreditLimit -- multi-table logic.
 
 To see more on how __watch__, __react__ and __chain__ 
-logic operates for multi-table transactions,   
+logic automates and optimizes multi-table transactions,
 [click here](../../wiki/Rules-Engines#multi-table-logic-execution).
 
 ## An Agile Perspective
