@@ -10,7 +10,7 @@ print("\nadd_cust, deleting: " + str(delete_cust) + "\n\n")
 session.commit()
 
 # Add a Customer - works
-new_cust = models.Customer(Id="$$New Cust", )
+new_cust = models.Customer(Id="$$New Cust", Balance=0, CreditLimit=0)
 session.add(new_cust)
 session.commit()
 
