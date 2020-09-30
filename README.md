@@ -139,6 +139,32 @@ To see more on how __watch__, __react__ and __chain__
 logic automates and optimizes multi-table transactions,
 [click here](../../wiki/Rules-Engines#multi-table-logic-execution).
 
+   
+#### Example: Add Order - Multi-Table Adjustment, Chaining
+
+<figure><img src="images/check-credit.png" width="500"><figcaption>The <b>Add Order</b> example illustrates chaining as OrderDetails are added:
+</figcaption></figure>
+
+1. The `OrderDetail.UnitPrice` is referenced from the Product
+so it is copied
+
+1. OrderDetails are referenced by the Orders' `AmountTotal` sum rule,
+so `AmountTotal` is adjusted
+
+1. The `AmountTotal` is referenced by the Customers' `Balance`,
+so it is adjusted
+
+1. And the Credit Limit constraint is checked 
+(exceptions are raised if constraints are violated)
+
+All of the dependency management to see which attribute have changed,
+logic ordering, the SQL commands to read and adjust rows, and the chaining
+are fully automated by the engine, based solely on the rules above.
+This is how 5 rules represent the same logic as 200 lines of code.
+
+Key points are discussed in the sub-sections below.
+
+
 ## An Agile Perspective
 The core tenant of agile is _working software,_
 driving _collaboration,_ for _rapid iterations._
