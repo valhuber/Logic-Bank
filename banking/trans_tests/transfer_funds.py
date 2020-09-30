@@ -9,7 +9,8 @@ withdrawl = models.SAVINGSTRANS(TransId=101, CustNum=2, AcctNum=3, DepositAmt=10
 print("\n\n - withdraw funds from checking trans: " + str(withdrawl))
 session.add(withdrawl)
 
-deposit = models.CHECKINGTRANS(TransId=101, CustNum=2, AcctNum=2, DepositAmt=0, WithdrawlAmt=10, TransDate=trans_date)
+deposit = models.CHECKINGTRANS(TransId=101,CustNum=2, AcctNum=2,
+                               DepositAmt=0, WithdrawlAmt=10, TransDate=trans_date)
 print("\n\n - deposit to savings trans: " + str(deposit))
 session.add(deposit)
 

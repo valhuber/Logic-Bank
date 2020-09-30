@@ -57,7 +57,9 @@ class LogicRow:
         self.some_base = declarative_base()
 
         self.name = type(self.row).__name__
-        self.table_meta = row.metadata.tables[type(self.row).__name__]
+        self.table_meta = None
+        if self.row is not None:
+            self.table_meta = row.metadata.tables[type(self.row).__name__]
         self.inspector = Inspector.from_engine(self.engine)
 
     def __str__(self):
@@ -119,11 +121,19 @@ class LogicRow:
         logic_bank.engine_logger.debug(output)
 
     def make_copy(self, a_row: base) -> base:
-        result_class = a_row.__class__
-        result = result_class()
-        row_mapper = object_mapper(a_row)
-        for each_attr in row_mapper.columns:  # note skips parent references
-            setattr(result, each_attr.key, getattr(a_row, each_attr.key))
+        """
+        returns copy of row, or None
+
+        :param a_row:
+        :return:
+        """
+        result = None
+        if a_row is not None:
+            result_class = a_row.__class__
+            result = result_class()
+            row_mapper = object_mapper(a_row)
+            for each_attr in row_mapper.columns:  # note skips parent references
+                setattr(result, each_attr.key, getattr(a_row, each_attr.key))
         return result
 
     def get_parent_logic_row(self, role_name: str, from_row: base = None) -> 'LogicRow':
@@ -339,6 +349,9 @@ class LogicRow:
         """
         def is_foreign_key_null(relationship: sqlalchemy.orm.relationships):
             child_columns = relationship.local_columns
+            if len(child_columns) == 0:
+                raise Exception("Malformed relationship has no foreign key: " +
+                                str(relationship))
             for each_child_column in child_columns:
                 each_child_column_name = each_child_column.name
                 if getattr(self.row, each_child_column_name) is None:
