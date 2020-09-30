@@ -23,13 +23,15 @@ Logic Bank is:
 - **Manageable:** develop and debug your rules in IDEs, manage it in SCS systems (such as `git`) using existing procedures
 
 
-For more information, [**see the Logic Bank Overview**](../../wiki/Home).
+Since transaction logic is a significant aspect of development,
+Logic Bank can return meaningful savings in time and cost - 
+[**see the Logic Bank Overview**](../../wiki/Home).
 
 Skeptical?  You should be.  Taking a rule-based approach to
 logic has serious implications for performance, quality and manageability.
 Unlike familiar rules engines, Logic Bank rules are specifically
-designed to be **scalable and extensible**
-[as explained here.](../../wiki/Rules-Engines)
+designed to be **scalable and extensible** - 
+[**see Rules Engines**](../../wiki/Rules-Engines).
 
 
 ## Architecture
@@ -182,8 +184,7 @@ Logic Bank has 2 projects: `Logic Bank`, and `Logic Bank Examples`.
 They have a number of elements in common:
 * They both have copies of two test databases - `nw` and `banking`.
 * The `nw` sample illustrates comparisons of Business logic, both
-[by-code](../../wiki/by-code) and
-[by-rules,](../../wiki/by-rules)
+[by code](../../wiki/by-code) and by rules (shown above).
 
 They differ in how the logic engine is installed:
 * `Logic Bank` - logic engine source is included

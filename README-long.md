@@ -318,11 +318,11 @@ The project includes:
 * the logic engine that executes the rules
 * the sample database (sqlite, so no db install is required)
 * business logic, both
-[by-code](https://github.com/valhuber/python-rules/wiki/by-code) and
-[by-rules,](https://github.com/valhuber/python-rules/wiki/by-rules)
+[by-code](../../wiki/by-code) and
+[by-rules,](../../wiki/by-rules)
 to facilitate comparison
    * control whether logic is via rules or code by altering`by_rules` in
-   [`__init__.py`](https://github.com/valhuber/python-rules/blob/master/nw/nw_logic/__init__.py)
+   [`__init__.py`](../blob/master/nw/nw_logic/__init__.py)
 * a test folder that runs various sample transactions
 
 You can run the programs in the `nw/trans_tests` folder
