@@ -181,6 +181,15 @@ the engine will reorganize execution order and database access, automatically
 
 
 ## Installation
+TL;DR - using your IDE or command line: 
+```
+git fork / clone
+cd Logic-Bank
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 Logic Bank consists of 2 project repositories:
 `Logic Bank` (this project), and `Logic Bank Examples.`
 They have a number of elements in common:
@@ -188,7 +197,7 @@ They have a number of elements in common:
 * They both have copies of two test database systems - `nw` and `banking`;
 these both contain
 
-    * Databases sqlite - no install required
+    * [Databases](nw) sqlite - no install required
 
     * Test folders than run key transactions - just run the scripts
 (note the logs)
