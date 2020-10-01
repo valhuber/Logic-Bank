@@ -50,12 +50,10 @@ banking_loc = basedir + "/db/banking.db"
 banking_source = basedir + "/db/banking-gold.db"
 copyfile(src=banking_source, dst=banking_loc)
 
-import banking as banking
-conn_string = banking.conn_string  # "mysql://root:espresso_logic@127.0.0.1:3309/banking"
 conn_string = "sqlite:///" + banking_loc
 engine = sqlalchemy.create_engine(conn_string,
                                   pool_pre_ping= True,
-                                  echo=True)  # sqlalchemy sqls...
+                                  echo=False)  # sqlalchemy sqls...
 
 session_maker = sqlalchemy.orm.sessionmaker()
 session_maker.configure(bind=engine)
