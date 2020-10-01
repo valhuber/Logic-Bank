@@ -20,7 +20,7 @@ if use_rules:
             required_path_present = True
     # print("\n sys.path...\n" + sys_path)
     if not required_path_present:
-        print("Fixing path (so can run from terminal) with: " +
+        print("banking_app/app/__init__.py fixing path (so can run from terminal) with: " +
               required_path_python_rules)
         sys.path.append(required_path_python_rules)
     else:
