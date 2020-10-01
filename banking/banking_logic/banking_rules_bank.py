@@ -8,7 +8,7 @@ from banking.banking_logic.models import CUSTOMER, CHECKING, CHECKINGTRANS, SAVI
 def activate_basic_rules():
     def transferFunds(row: TRANSFERFUND, old_row: TRANSFERFUND, logic_row: LogicRow):
         if logic_row.ins_upd_dlt == "ins" or True:  # logic engine fills parents for insert
-            print("Transfer from source to target")
+            logic_row.log("Transfer from source to target")
             fromCustNum = row.FromCustNum
             toCustNum = row.ToCustNum
             acctNum = row.FromAcct
@@ -18,11 +18,10 @@ def activate_basic_rules():
             # need to lookup the From Acct to see if it is checking or savings - that way we can reverse the flow
             deposit = models.SAVINGSTRANS(TransId=transID, CustNum=toCustNum, AcctNum=acctNum, DepositAmt=transferAmt, WithdrawlAmt=0,
                                             TransDate=trans_date)
-            logic_row.insert("to savings", deposit)
+            logic_row.insert("Deposit to savings", deposit)
             withdrawl = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
                                            DepositAmt=0, WithdrawlAmt=transferAmt, TransDate=trans_date)
-            print("\n\n - withdraw from CHECKINGTRANS: " + str(withdrawl))
-            logic_row.insert("from checking", withdrawl)
+            logic_row.insert("Withdraw from CHECKINGTRANS", withdrawl)
 
     Rule.sum(derive=CHECKING.Deposits, as_sum_of=CHECKINGTRANS.DepositAmt)
     Rule.sum(derive=CHECKING.Withdrawls, as_sum_of=CHECKINGTRANS.WithdrawlAmt)
