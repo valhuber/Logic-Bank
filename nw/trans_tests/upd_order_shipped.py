@@ -10,9 +10,6 @@ import os
 import sys
 from datetime import datetime
 
-from sqlalchemy import inspect, MetaData
-from sqlalchemy.ext.declarative import declarative_base
-
 cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/trans_tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
 required_path_python_rules = required_path_python_rules.replace("/nw/trans_tests", "")
@@ -39,6 +36,9 @@ path_info = "Run Environment info...\n\n"\
             + "At: " + str(datetime.now()) + "\n\n"
 print("\n" + path_info + "\n\n")
 
+
+from sqlalchemy import inspect, MetaData
+from sqlalchemy.ext.declarative import declarative_base
 
 import nw.nw_logic.models as models
 from logic_bank.exec_row_logic.logic_row import LogicRow

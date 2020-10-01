@@ -1,4 +1,36 @@
 import os
+
+
+import os
+import sys
+from datetime import datetime
+
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/trans_tests
+required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
+required_path_python_rules = required_path_python_rules.replace("/nw/trans_tests", "")
+
+sys_path = ""
+required_path_present = False
+for each_node in sys.path:
+    sys_path += each_node + "\n"
+    if each_node == required_path_python_rules:
+        required_path_present = True
+
+if not required_path_present:
+    print("Fixing path (so can run from terminal)")
+    sys.path.append(required_path_python_rules)
+else:
+    pass
+    print("NOT Fixing path (default PyCharm, set in VSC Launch Config)")
+
+path_info = "Run Environment info...\n\n"\
+            + "Current Working Directory: " + cwd + "\n\n"\
+            + "sys.path: (Python imports)\n" + sys_path + "\n"\
+            + "From: " + sys.argv[0] + "\n\n"\
+            + "Using Python: " + sys.version + "\n\n"\
+            + "At: " + str(datetime.now()) + "\n\n"
+print("\n" + path_info + "\n\n")
+
 import sqlalchemy
 import nw.nw_logic.models as models
 from nw.nw_logic import session  # opens db, activates logic listener <--
