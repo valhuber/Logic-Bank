@@ -17,11 +17,11 @@ def activate_basic_rules():
             transID = row.TransId
             withdrawl = models.SAVINGSTRANS(TransId=transID, CustNum=toCustNum, AcctNum=acctNum, DepositAmt=transferAmt, WithdrawlAmt=0,
                                             TransDate=trans_date)
-            session.add(withdrawl)
+            logic_row.insert(" from savings", withdrawl)
             deposit = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
                                            DepositAmt=0, WithdrawlAmt=transferAmt, TransDate=trans_date)
             print("\n\n - withdraw from CHECKINGTRANS: " + str(deposit))
-            session.add(deposit)
+            logic_row.insert("to checking", deposit)
 
     Rule.sum(derive=CHECKING.Deposits, as_sum_of=CHECKINGTRANS.DepositAmt)
     Rule.sum(derive=CHECKING.Withdrawls, as_sum_of=CHECKINGTRANS.WithdrawlAmt)
