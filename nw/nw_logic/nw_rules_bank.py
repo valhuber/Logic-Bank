@@ -1,10 +1,5 @@
-import sqlalchemy
-from sqlalchemy_utils import get_mapper
-
 from logic_bank.exec_row_logic.logic_row import LogicRow
 from logic_bank.rule import Rule
-from logic_bank.rule_bank.rule_bank import RuleBank
-from nw.nw_logic import models
 from nw.nw_logic.models import Customer, OrderDetail, Product, Order, Employee
 
 
