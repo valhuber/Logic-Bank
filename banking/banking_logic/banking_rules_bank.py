@@ -15,13 +15,14 @@ def activate_basic_rules():
             trans_date = datetime.datetime(2020, 10, 1)
             transferAmt = row.TransferAmt
             transID = row.TransId
-            withdrawl = models.SAVINGSTRANS(TransId=transID, CustNum=toCustNum, AcctNum=acctNum, DepositAmt=transferAmt, WithdrawlAmt=0,
+            # need to lookup the From Acct to see if it is checking or savings - that way we can reverse the flow
+            deposit = models.SAVINGSTRANS(TransId=transID, CustNum=toCustNum, AcctNum=acctNum, DepositAmt=transferAmt, WithdrawlAmt=0,
                                             TransDate=trans_date)
-            logic_row.insert(" from savings", withdrawl)
-            deposit = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
+            logic_row.insert("to savings", deposit)
+            withdrawl = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
                                            DepositAmt=0, WithdrawlAmt=transferAmt, TransDate=trans_date)
-            print("\n\n - withdraw from CHECKINGTRANS: " + str(deposit))
-            logic_row.insert("to checking", deposit)
+            print("\n\n - withdraw from CHECKINGTRANS: " + str(withdrawl))
+            logic_row.insert("from checking", withdrawl)
 
     Rule.sum(derive=CHECKING.Deposits, as_sum_of=CHECKINGTRANS.DepositAmt)
     Rule.sum(derive=CHECKING.Withdrawls, as_sum_of=CHECKINGTRANS.WithdrawlAmt)
