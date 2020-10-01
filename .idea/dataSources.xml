@@ -13,5 +13,17 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/banking/db/banking.db</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="banking-gold.db" uuid="df0a62b3-507e-4b9c-bb04-6ee3a499507e">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/banking/db/banking-gold.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="nw-gold.db" uuid="e16adc5e-3d10-488d-9231-edd99dffb95c">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/nw/db/nw-gold.db</jdbc-url>
+    </data-source>
   </component>
 </project>
