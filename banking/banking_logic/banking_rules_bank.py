@@ -6,7 +6,8 @@ from logic_bank.rule import Rule
 from banking.banking_logic.models import CUSTOMER, CHECKING, CHECKINGTRANS, SAVING, SAVINGSTRANS, TRANSFERFUND
 
 def activate_basic_rules():
-    def transferFunds(row: TRANSFERFUND, old_row: TRANSFERFUND, logic_row: LogicRow):
+
+    def transfer_funds(row: TRANSFERFUND, old_row: TRANSFERFUND, logic_row: LogicRow):
         if logic_row.ins_upd_dlt == "ins" or True:  # logic engine fills parents for insert
             logic_row.log("Transfer from source to target")
             fromCustNum = row.FromCustNum
@@ -43,5 +44,5 @@ def activate_basic_rules():
     Rule.formula(derive=CHECKINGTRANS.Total, as_expression=lambda row: row.DepositAmt - row.WithdrawlAmt)
     Rule.formula(derive=SAVINGSTRANS.Total, as_expression=lambda row: row.DepositAmt - row.WithdrawlAmt)
 
-    Rule.commit_row_event(on_class=TRANSFERFUND, calling=transferFunds)
+    Rule.commit_row_event(on_class=TRANSFERFUND, calling=transfer_funds)
 

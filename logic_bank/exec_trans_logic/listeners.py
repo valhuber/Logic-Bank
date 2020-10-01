@@ -65,8 +65,9 @@ def before_flush(a_session: session, a_flush_context, an_instances):
     Commit Logic Phase
     """
     logic_bank.logic_logger.debug("Logic Phase:\t\tCOMMIT   \t\t\t\t\t\t\t\t\t")
-    for each_logic_row_key in row_sets.processed_rows:
-        each_logic_row = row_sets.processed_rows[each_logic_row_key]
+    processed_rows = dict.copy(row_sets.processed_rows)
+    for each_logic_row_key in processed_rows:
+        each_logic_row = processed_rows[each_logic_row_key]
         logic_bank.engine_logger.debug("visit: " + each_logic_row.__str__())
         commit_row_events = rule_bank_withdraw.rules_of_class(each_logic_row, CommitRowEvent)
         for each_row_event in commit_row_events:
@@ -81,7 +82,7 @@ def before_flush(a_session: session, a_flush_context, an_instances):
 
 def temp_debug(a_session, bug_explore, row_cache):
     """
-    see description in nw/trans_tests/upd_order_reuse
+    do not delete - see description in nw/trans_tests/upd_order_reuse
     """
     for each_instance in a_session.dirty:
         table_name = each_instance.__tablename__
