@@ -1,7 +1,4 @@
 import os
-
-
-import os
 import sys
 from datetime import datetime
 
@@ -31,9 +28,8 @@ path_info = "Run Environment info...\n\n"\
             + "At: " + str(datetime.now()) + "\n\n"
 print("\n" + path_info + "\n\n")
 
-import sqlalchemy
-import nw.nw_logic.models as models
-from nw.nw_logic import session  # opens db, activates logic listener <--
+import nw.db.models as models
+from nw.logic import session  # opens db, activates logic listener <--
 
 
 # first delete, so can add

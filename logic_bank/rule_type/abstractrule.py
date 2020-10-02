@@ -34,7 +34,7 @@ class AbstractRule(object):
     def get_class_name(self, decl_meta: sqlalchemy.ext.declarative.api.DeclarativeMeta) -> str:
         """
         extract class name from class_
-        eg, OrderDetail from <class 'nw.nw_logic.models.OrderDetail'>
+        eg, OrderDetail from <class 'nw.logic.models.OrderDetail'>
         """
         nodal_name = str(decl_meta)
         nodes = nodal_name.split('.')

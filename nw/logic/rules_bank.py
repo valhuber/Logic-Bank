@@ -1,6 +1,6 @@
 from logic_bank.exec_row_logic.logic_row import LogicRow
 from logic_bank.rule import Rule
-from nw.nw_logic.models import Customer, OrderDetail, Product, Order, Employee
+from nw.db.models import Customer, OrderDetail, Product, Order
 
 
 def activate_basic_check_credit_rules():

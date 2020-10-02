@@ -8,9 +8,9 @@ from flask_appbuilder import AppBuilder, SQLA
 use_rules = True
 
 if use_rules:
-    cwd = os.getcwd()  # eg, /Users/val/python/pycharm/logic-bank/nw_app
+    cwd = os.getcwd()  # eg, /Users/val/python/pycharm/logic-bank/web_app
     required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
-    required_path_python_rules = required_path_python_rules.replace("/nw_app", "")
+    required_path_python_rules = required_path_python_rules.replace("/nw/web_app", "")
 
     sys_path = ""
     required_path_present = False
@@ -20,7 +20,7 @@ if use_rules:
             required_path_present = True
     print("\n sys.path...\n" + sys_path)
     if not required_path_present:
-        print("nw_app/app/__init__.py fixing path (so can run from terminal) with: " +
+        print("web_app/app/__init__.py fixing path (so can run from terminal) with: " +
               required_path_python_rules)
         sys.path.append(required_path_python_rules)
     else:
@@ -28,13 +28,10 @@ if use_rules:
         print("NOT Fixing path (default PyCharm, set in VSC Launch Config): " +
               required_path_python_rules)
 
-    import nw.nw_logic.models as models
-    from logic_bank.util import row_prt, prt
-    from nw.nw_logic import session  # opens db, activates logic listener <--
+    import nw.db.models as models  # FIXME design prevents circular imports
 
-    from logic_bank.rule_bank import rule_bank_withdraw  # required to avoid circular imports
     from logic_bank.rule_bank import rule_bank_setup
-    from nw.nw_logic import activate_basic_check_credit_rules
+    from nw.logic import activate_basic_check_credit_rules
 
 """
  Logging configuration

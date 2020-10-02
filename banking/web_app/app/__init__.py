@@ -28,6 +28,8 @@ if use_rules:  # need logic_bank on path... add if not present
         print("NOT Fixing path (default PyCharm, set in VSC Launch Config): " +
               required_path_python_rules)
 
+    from logic_bank.rule_bank import rule_bank_withdraw  # required to avoid circular imports
+
     from logic_bank.rule_bank import rule_bank_setup
     from banking.logic.rules_bank import activate_basic_rules
 

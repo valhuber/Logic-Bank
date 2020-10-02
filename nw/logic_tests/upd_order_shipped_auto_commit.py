@@ -10,6 +10,8 @@ import os
 import sys
 from datetime import datetime
 
+from sqlalchemy import inspect
+
 cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
 required_path_python_rules = required_path_python_rules.replace("/nw/logic_tests", "")
@@ -37,22 +39,16 @@ path_info = "Run Environment info...\n\n"\
 print("\n" + path_info + "\n\n")
 
 
-from sqlalchemy import inspect, MetaData
-from sqlalchemy.ext.declarative import declarative_base
-
-import nw.nw_logic.models as models
+import nw.db.models as models
 from logic_bank.exec_row_logic.logic_row import LogicRow
 from logic_bank.util import row_prt, prt
-from nw import nw_logic
-from nw.nw_logic import session  # opens db, activates logic listener <--
+from nw.logic import session, engine  # opens db, activates logic listener <--
+
 
 def toggle_order_shipped():
-    """
-        toggle Shipped Date, to trigger
-            * balance adjustment
-            * cascade to OrderDetails
-            * and Product adjustment
-        also test join
+    """ toggle Shipped Date, to trigger balance adjustment """
+    """ also test join.
+    session.query(Customer).join(Invoice).filter(Invoice.amount == 8500).all()
     """
 
     pre_cust = session.query(models.Customer).filter(models.Customer.Id == "ALFKI").one()
@@ -61,13 +57,16 @@ def toggle_order_shipped():
     print("")
     test_order = session.query(models.Order).filter(models.Order.Id == 11011).join(models.Employee).one()
     if test_order.ShippedDate is None or test_order.ShippedDate == "":
+        # with restored db, cust[ALFKI] has bal 960 & 3 unpaid orders, Order[11011) is 960, unshipped
         test_order.ShippedDate = str(datetime.now())
-        print(prt("Shipping order - ShippedDate: ['' -> " + test_order.ShippedDate + "]"))
+        print(prt("Shipping order - ShippedDate: ['' -> " + test_order.ShippedDate + "]" +
+                  " for customer balance: " + str(pre_cust.Balance) +
+                  ", with UnpaidOrderCount: " + str(pre_cust.UnpaidOrderCount)))
     else:
         test_order.ShippedDate = None
         print(prt("Returning order - ShippedDate: [ -> None]"))
     insp = inspect(test_order)
-    session.commit()
+    # session.commit()
 
     print("")
     post_cust = session.query(models.Customer).filter(models.Customer.Id == "ALFKI").one()
@@ -77,22 +76,12 @@ def toggle_order_shipped():
         logic_row.log("Correct adjusted Customer Result")
         assert True
     else:
-        logic_row.log(post_cust, "ERROR - incorrect adjusted Customer Result")
+        row_prt(post_cust, "\nERROR - incorrect adjusted Customer Result")
+        print("\n--> probable cause: Order customer update not written")
+        row_prt(pre_cust, "\npre_alfki")
         assert False
 
-    if post_cust.Balance == 0:
-        pass
-    else:
-        logic_row.log("ERROR - balance should be 0")
-        assert False
-
-    if post_cust.UnpaidOrderCount == 2 and pre_cust.UnpaidOrderCount == 3:
-        pass
-    else:
-        logic_row.log("Error - UnpaidOrderCount should be 2")
-        assert False
-
-
-toggle_order_shipped()
-print("\nupd_order_shipped, ran to completion")
+with engine.connect().execution_options(autocommit=True) as conn:
+    toggle_order_shipped()
+    print("\nupd_order_shipped_auto_commit, ran to completion")
 

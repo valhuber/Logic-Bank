@@ -1,6 +1,3 @@
-from sqlalchemy import event
-
-import nw.nw_logic.models as models
 from sqlalchemy.orm import session
 
 from logic_bank.util import get_old_row, row_prt

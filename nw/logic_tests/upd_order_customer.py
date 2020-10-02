@@ -10,8 +10,7 @@ import os
 import sys
 from datetime import datetime
 
-from sqlalchemy import inspect, MetaData
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import inspect
 
 cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
@@ -40,11 +39,10 @@ path_info = "Run Environment info...\n\n"\
 print("\n" + path_info + "\n\n")
 
 
-import nw.nw_logic.models as models
+import nw.db.models as models
 from logic_bank.exec_row_logic.logic_row import LogicRow
 from logic_bank.util import row_prt, prt
-from nw import nw_logic
-from nw.nw_logic import session  # opens db, activates logic listener <--
+from nw.logic import session  # opens db, activates logic listener <--
 
 
 """ toggle order's customer to ANATR, to verify no effect on Customer, OrderDetails """

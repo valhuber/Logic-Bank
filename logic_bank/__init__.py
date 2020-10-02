@@ -12,7 +12,7 @@ Alternatives:
     Module (import logic_bank)
         Same ref... trying that, simplest
         import logic_bank
-        import nw_logic.listeners.py
+        import logic.listeners.py
 
     sqlalchemy Engine Plug-in
 

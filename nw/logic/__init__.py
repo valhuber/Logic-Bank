@@ -3,22 +3,21 @@ from shutil import copyfile
 
 import sqlalchemy
 from sqlalchemy import event
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import session
 
 from logic_bank.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
 from logic_bank.rule_bank import rule_bank_setup
-from nw.nw_logic.nw_rules_bank import activate_basic_check_credit_rules
+from nw.logic.rules_bank import activate_basic_check_credit_rules
 
-from nw.nw_logic.order_code import order_commit_dirty, order_flush_dirty, order_flush_new, order_flush_delete
-from nw.nw_logic.order_detail_code import order_detail_flush_new, order_detail_flush_delete
+from nw.logic.legacy.order_code import order_commit_dirty, order_flush_dirty, order_flush_new, order_flush_delete
+from nw.logic.legacy.order_detail_code import order_detail_flush_new, order_detail_flush_delete
 
 from logic_bank.util import prt
 
-# from nw.nw_logic.models import Order
+# from nw.logic.models import Order
 
 '''
-These listeners are part of the hand-coded logic alternative
+These listeners are part of the legacy, hand-coded logic alternative
 (Not required in a rules-based approach)
 '''
 
@@ -70,7 +69,7 @@ def nw_before_flush(a_session: session, a_flush_context, an_instances):
 2 - Register listeners (either hand-coded ones above, or the logic-engine listeners).
 """
 
-print("\n" + prt("nw/nw_logic/__init__.py BEGIN - setup logging, connect to db, register listeners\n"))
+print("\n" + prt("nw/logic/__init__.py BEGIN - setup logging, connect to db, register listeners\n"))
 
 # Initialize Logging
 import logging
@@ -96,14 +95,13 @@ if do_engine_logging:
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 basedir = os.path.dirname(basedir)
-basedir = os.path.dirname(basedir)
 
 print("\n****************\n"
-      "  IMPORTANT - create nw.db from nw-gold.db in " + basedir + "/nw/db/" +
+      "  IMPORTANT - create database.db from database-gold.db in " + basedir + "/nw/db/" +
       "\n****************")
 
-nw_loc = os.path.join(basedir, "nw/db/nw.db")
-nw_source = os.path.join(basedir, "nw/db/nw-gold.db")
+nw_loc = os.path.join(basedir, "db/database.db")
+nw_source = os.path.join(basedir, "db/database-gold.db")
 copyfile(src=nw_source, dst=nw_loc)
 
 conn_string = "sqlite:///" + nw_loc
@@ -125,4 +123,4 @@ else:
     event.listen(session, "before_commit", nw_before_commit)
     event.listen(session, "before_flush", nw_before_flush)
 
-print("\n" + prt("nw/nw_logic/__init__.py END - connected, session created, listeners registered\n"))
+print("\n" + prt("nw/logic/__init__.py END - connected, session created, listeners registered\n"))

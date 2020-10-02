@@ -14,11 +14,11 @@ SECRET_KEY = "\2\1thisismyscretkey\1\2\e\y\y\h"
 
 # The SQLAlchemy connection string.
 
-print("*** os.path: " + str(os.path.dirname(basedir)))
+# print("*** os.path: " + str(os.path.dirname(basedir)))
 db_dir = os.path.dirname(basedir)
-print("*** db_dir: " + db_dir)
+# print("*** db_dir: " + db_dir)
 # print("****** here?: " + db_dir.dirname)
-db_loc = db_dir +  "/db/banking.db"
+db_loc = db_dir +  "/db/database.db"
 
 SQLALCHEMY_DATABASE_URI = "sqlite:///" + db_loc
 

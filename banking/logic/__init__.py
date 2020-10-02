@@ -43,11 +43,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 basedir = os.path.dirname(basedir)
 
 print("\n****************\n"
-      "  IMPORTANT - create banking.db from banking-gold.db in " + basedir + "/db/" +
+      "  IMPORTANT - create database.db from database-gold.db in " + basedir + "/db/" +
       "\n****************")
 
-banking_loc = basedir + "/db/banking.db"
-banking_source = basedir + "/db/banking-gold.db"
+banking_loc = basedir + "/db/database.db"
+banking_source = basedir + "/db/database-gold.db"
 copyfile(src=banking_source, dst=banking_loc)
 
 conn_string = "sqlite:///" + banking_loc

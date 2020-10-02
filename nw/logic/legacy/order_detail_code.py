@@ -1,7 +1,7 @@
-import nw.nw_logic.models as models
+import nw.db.models as models
 from sqlalchemy.orm import session
 from logic_bank.util import get_old_row, row_prt, row2dict, ObjectView
-from nw.nw_logic.order_code import order_update
+from nw.logic.legacy.order_code import order_update
 
 
 """            NO LONGER REQUIRED WITH A RULES-BASED APPROACH

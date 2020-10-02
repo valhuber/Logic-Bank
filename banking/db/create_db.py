@@ -6,7 +6,7 @@ import banking.db.models as models  #
 
 # https://stackoverflow.com/questions/16284537/sqlalchemy-creating-an-sqlite-database-if-it-doesnt-exist
 
-# engine = create_engine('sqlite:///banking.db', echo=True)
+# engine = create_engine('sqlite:///database.db', echo=True)
 
 Base = models.Base
 

@@ -76,7 +76,7 @@ pip install -i https://test.pypi.org/simple/ logic-bank
 
 ##### Declare rules using Python
 Logic is declared as spreadsheet-like rules as shown below
-from  [`nw/nw_logic/nw_rules_bank.py`](nw/nw_logic/nw_rules_bank.py),
+from  [`nw/nw_logic/nw_rules_bank.py`](nw/logic/rules_bank.py),
 which implements the *check credit* requirement:
 ```python
 def activate_basic_check_credit_rules():
@@ -107,13 +107,13 @@ common logic execution patterns, described below.
 
 ##### Activate Rules
 To test our rules, we use
-[`nw/trans_tests/add_order.py`](nw/trans_tests/add_order.py).
+[`nw/trans_tests/add_order.py`](nw/logic_tests/add_order.py).
 It activates the rules using this import:
 ```python
-from nw.nw_logic import session  # opens db, activates logic listener <--
+from nw.logic import session  # opens db, activates logic listener <--
 ```
  
-This executes [`nw/nw_logic/__init__.py`](nw/nw_logic/__init__.py),
+This executes [`nw/nw_logic/__init__.py`](nw/logic/__init__.py),
 which sets up the rule engine:
 ```python
 by_rules = True  # True => use rules, False => use hand code (for comparison)
@@ -222,10 +222,10 @@ these both contain
 
     * [Databases](nw) sqlite - no install required
 
-    * [Test folders](nw/trans_tests) than run key transactions - just run the scripts
+    * [Test folders](nw/logic_tests) than run key transactions - just run the scripts
 (note the logs)
 
-    * [Flask AppBuilder apps](nw_app) (as described above)
+    * [Flask AppBuilder apps](nw/web_app) (as described above)
     
     * [Logic](nw_logic) - models and rules (and, for `'nw',
     the manual code for constrast to rules)
