@@ -76,7 +76,7 @@ pip install -i https://test.pypi.org/simple/ logic-bank
 
 ##### Declare rules using Python
 Logic is declared as spreadsheet-like rules as shown below
-from  [`nw/nw_logic/nw_rules_bank.py`](nw/logic/rules_bank.py),
+from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
 which implements the *check credit* requirement:
 ```python
 def activate_basic_check_credit_rules():
@@ -113,7 +113,7 @@ It activates the rules using this import:
 from nw.logic import session  # opens db, activates logic listener <--
 ```
  
-This executes [`nw/nw_logic/__init__.py`](nw/logic/__init__.py),
+This executes [`nw/logic/__init__.py`](nw/logic/__init__.py),
 which sets up the rule engine:
 ```python
 by_rules = True  # True => use rules, False => use hand code (for comparison)
