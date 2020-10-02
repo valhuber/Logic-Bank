@@ -1,7 +1,37 @@
-import datetime
+import os
+import sys
+from datetime import datetime
+
 import banking.db.models as models
 from banking.logic import session  # opens db, activates logic listener <--
 from logic_bank.exec_row_logic.logic_row import LogicRow
+
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
+required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/Logic-Bank
+required_path_python_rules = required_path_python_rules.replace("/banking/logic_tests", "")
+required_path_python_rules = required_path_python_rules.replace("\banking\logic_tests", "")
+
+sys_path = ""
+required_path_present = False
+for each_node in sys.path:
+    sys_path += each_node + "\n"
+    if each_node == required_path_python_rules:
+        required_path_present = True
+
+if not required_path_present:
+    print("Fixing path (so can run from terminal)")
+    sys.path.append(required_path_python_rules)
+else:
+    pass
+    print("NOT Fixing path (default PyCharm, set in VSC Launch Config)")
+
+path_info = "Run Environment info...\n\n"\
+            + "Current Working Directory: " + cwd + "\n\n"\
+            + "sys.path: (Python imports)\n" + sys_path + "\n"\
+            + "From: " + sys.argv[0] + "\n\n"\
+            + "Using Python: " + sys.version + "\n\n"\
+            + "At: " + str(datetime.now()) + "\n\n"
+print("\n" + path_info + "\n\n")
 
 pre_cust = session.query(models.CUSTOMER).filter(models.CUSTOMER.CustNum == 1).one()
 session.expunge(pre_cust)
@@ -10,7 +40,7 @@ session.expunge(pre_cust)
     ********* Customer Account Deposit Checking Setup - Deposit $100 to CHECKINGTRANS *********
 """
 
-trans_date = datetime.datetime(2020, 10, 1)
+trans_date = datetime(2020, 10, 1)
 deposit = models.CHECKINGTRANS(TransId=1, CustNum=1, AcctNum=1,
                                DepositAmt=100, WithdrawlAmt=0, TransDate=trans_date)
 print("\n\nCustomer Account Deposit Checking Setup - Deposit $100 to CHECKINGTRANS: " + str(deposit))
