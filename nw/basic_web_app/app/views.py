@@ -2,7 +2,7 @@
 """
 Fab QuickStart 0.1.2
 
-Current Working Directory: /Users/val/python/vsc/logic-nw/web_app
+Current Working Directory: /Users/val/python/vsc/logic-nw/basic_web_app
 
 From: /Users/val/python/vsc/logic-explore/venv/bin/fab-quick-start
 

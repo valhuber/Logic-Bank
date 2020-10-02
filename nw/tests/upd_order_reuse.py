@@ -13,10 +13,10 @@ from decimal import Decimal
 
 from sqlalchemy import inspect
 
-cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
-required_path_python_rules = required_path_python_rules.replace("/nw/logic_tests", "")
-required_path_python_rules = required_path_python_rules.replace("\\nw\logic_tests", "")
+required_path_python_rules = required_path_python_rules.replace("/nw/tests", "")
+required_path_python_rules = required_path_python_rules.replace("\\nw\tests", "")
 
 sys_path = ""
 required_path_present = False
@@ -198,7 +198,7 @@ Failed run:
         pydev_imports.execfile(file, globals, locals)  # execute the script
       File "/Applications/PyCharm CE.app/Contents/plugins/python-ce/helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
         exec(compile(contents+"\n", file, 'exec'), glob, loc)
-      File "/Users/val/python/pycharm/logic-bank/nw/logic_tests/upd_order_reuse.py", line 136, in <module>
+      File "/Users/val/python/pycharm/logic-bank/nw/tests/upd_order_reuse.py", line 136, in <module>
         assert False
     AssertionError
 

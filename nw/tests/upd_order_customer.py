@@ -12,10 +12,10 @@ from datetime import datetime
 
 from sqlalchemy import inspect
 
-cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
-required_path_python_rules = required_path_python_rules.replace("/nw/logic_tests", "")
-required_path_python_rules = required_path_python_rules.replace("\\nw\logic_tests", "")
+required_path_python_rules = required_path_python_rules.replace("/nw/tests", "")
+required_path_python_rules = required_path_python_rules.replace("\\nw\tests", "")
 
 sys_path = ""
 required_path_present = False

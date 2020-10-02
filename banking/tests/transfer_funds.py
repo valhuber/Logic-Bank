@@ -6,10 +6,10 @@ import banking.db.models as models
 from banking.logic import session  # opens db, activates logic listener <--
 from logic_bank.exec_row_logic.logic_row import LogicRow
 
-cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/Logic-Bank
-required_path_python_rules = required_path_python_rules.replace("/banking/logic_tests", "")
-required_path_python_rules = required_path_python_rules.replace("\banking\logic_tests", "")
+required_path_python_rules = required_path_python_rules.replace("/banking/tests", "")
+required_path_python_rules = required_path_python_rules.replace("\banking\tests", "")
 
 sys_path = ""
 required_path_present = False

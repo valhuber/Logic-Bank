@@ -7,10 +7,10 @@ from flask_appbuilder import AppBuilder, SQLA
 
 use_rules = True
 
-if use_rules:
-    cwd = os.getcwd()  # eg, /Users/val/python/pycharm/logic-bank/web_app
-    required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
-    required_path_python_rules = required_path_python_rules.replace("/nw/web_app", "")
+if use_rules:  # need logic_bank on path... add if not present
+    cwd = os.getcwd()
+    required_path_python_rules = cwd
+    required_path_python_rules = required_path_python_rules.replace("/banking/basic_web_app", "")
 
     sys_path = ""
     required_path_present = False
@@ -18,9 +18,9 @@ if use_rules:
         sys_path += each_node + "\n"
         if each_node == required_path_python_rules:
             required_path_present = True
-    print("\n sys.path...\n" + sys_path)
+    # print("\n sys.path...\n" + sys_path)
     if not required_path_present:
-        print("web_app/app/__init__.py fixing path (so can run from terminal) with: " +
+        print("banking_app/app/__init__.py fixing path (so can run from terminal) with: " +
               required_path_python_rules)
         sys.path.append(required_path_python_rules)
     else:
@@ -28,10 +28,10 @@ if use_rules:
         print("NOT Fixing path (default PyCharm, set in VSC Launch Config): " +
               required_path_python_rules)
 
-    import nw.db.models as models  # FIXME design prevents circular imports
+    from logic_bank.rule_bank import rule_bank_withdraw  # required to avoid circular imports
 
     from logic_bank.rule_bank import rule_bank_setup
-    from nw.logic import activate_basic_check_credit_rules
+    from banking.logic.rules_bank import activate_basic_rules
 
 """
  Logging configuration
@@ -48,20 +48,7 @@ appbuilder = AppBuilder(app, db.session)
 
 if use_rules:
     rule_bank_setup.setup(db.session, db.engine)
-    activate_basic_check_credit_rules()
+    activate_basic_rules()
     rule_bank_setup.validate(db.session, db.engine)  # checks for cycles, etc
-
-"""
-from sqlalchemy.engine import Engine
-from sqlalchemy import event
-
-#Only include this for SQLLite constraints
-@event.listens_for(Engine, "connect")
-def set_sqlite_pragma(dbapi_connection, connection_record):
-    # Will force sqllite contraint foreign keys
-    cursor = dbapi_connection.cursor()
-    cursor.execute("PRAGMA foreign_keys=ON")
-    cursor.close()
-"""
 
 from . import views

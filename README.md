@@ -107,7 +107,7 @@ common logic execution patterns, described below.
 
 ##### Activate Rules
 To test our rules, we use
-[`nw/logic_tests/add_order.py`](nw/logic_tests/add_order.py).
+[`nw/logic_tests/add_order.py`](nw/tests/add_order.py).
 It activates the rules using this import:
 ```python
 from nw.logic import session  # opens db, activates logic listener <--
@@ -173,7 +173,7 @@ The examples above illustrate how just a few rules can replace
 ##### Collaboration - Running Screens
 
 Certainly business users are more easily able to
-read rules than code.  But honestly, rules are
+read rules than code.  But still, rules are
 pretty abstract.
 
 Business users relate best to actual working pages -
@@ -220,12 +220,12 @@ They have a number of elements in common:
 * They both have copies of two test database systems - `nw` and `banking`;
 these both contain
 
-    * [Databases](nw) sqlite - no install required
+    * [Databases](nw/db) sqlite - no install required
 
-    * [Test folders](nw/logic_tests) than run key transactions - just run the scripts
+    * [Test folders](nw/tests) than run key transactions - just run the scripts
 (note the logs)
 
-    * [Flask AppBuilder apps](nw/web_app) (as described above)
+    * [Flask AppBuilder apps](nw/basic_web_app) (as described above)
     
     * [Logic](nw/logic) - models and rules (and, for `'nw',
     the manual code for contrast to rules)
