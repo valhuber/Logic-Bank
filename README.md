@@ -107,7 +107,7 @@ common logic execution patterns, described below.
 
 ##### Activate Rules
 To test our rules, we use
-[`nw/trans_tests/add_order.py`](nw/logic_tests/add_order.py).
+[`nw/logic_tests/add_order.py`](nw/logic_tests/add_order.py).
 It activates the rules using this import:
 ```python
 from nw.logic import session  # opens db, activates logic listener <--
@@ -227,8 +227,8 @@ these both contain
 
     * [Flask AppBuilder apps](nw/web_app) (as described above)
     
-    * [Logic](nw_logic) - models and rules (and, for `'nw',
-    the manual code for constrast to rules)
+    * [Logic](nw/logic) - models and rules (and, for `'nw',
+    the manual code for contrast to rules)
     
 * The `nw` sample illustrates comparisons of Business logic, both
 [by code](../../wiki/by-code) and by rules (shown above).
