@@ -27,11 +27,13 @@ Since transaction logic is a significant aspect of development,
 Logic Bank can return meaningful savings in time and cost - 
 [**see the Logic Bank Overview**](../../wiki/Home).
 
-Skeptical?  You should be.  Taking a rule-based approach to
-logic has serious implications for performance, quality and manageability.
+Skeptical?  You should be.  Choosing an automated approach with
+technology ill-suited to transaction processing has
+serious implications for performance, quality and manageability.
 Unlike familiar rules engines, Logic Bank rules are specifically
-designed to be **scalable and extensible** - 
-[**see Rules Engines**](../../wiki/Rules-Engines).
+designed to be **scalable and extensible**,
+based on a technology proven in practice -
+[**see Rules Engines**](../../wiki/Rules-Engines),
 
 
 ## Architecture
