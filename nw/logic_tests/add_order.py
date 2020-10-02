@@ -4,8 +4,9 @@ import sys
 from datetime import datetime
 
 cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
-required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
+required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/Logic-Bank
 required_path_python_rules = required_path_python_rules.replace("/nw/logic_tests", "")
+print("\nrequired_path_python_rules: "+ required_path_python_rules + "\n")
 
 sys_path = ""
 required_path_present = False
