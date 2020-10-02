@@ -1,4 +1,4 @@
-print("   ************** trans_tests MODULE INIT (never seems to run)  ************")
+print("   ************** logic_tests MODULE INIT (never seems to run)  ************")
 
 import os
 import sys
@@ -7,9 +7,9 @@ from datetime import datetime
 from sqlalchemy import inspect, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 
-cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/trans_tests
+cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/logic_tests
 path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
-path_python_rules = path_python_rules.replace("/nw/trans_tests", "")
+path_python_rules = path_python_rules.replace("/nw/logic_tests", "")
 print("path: " + path_python_rules)
 
 sys_path = ""

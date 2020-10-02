@@ -2,11 +2,7 @@
 One-off to create schema from models.py - no longer used
 """
 
-from sqlalchemy import create_engine, ForeignKey
-from sqlalchemy import Column, Date, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-
-import banking.banking_logic.models as models  #
+import banking.db.models as models  #
 
 # https://stackoverflow.com/questions/16284537/sqlalchemy-creating-an-sqlite-database-if-it-doesnt-exist
 
@@ -14,6 +10,6 @@ import banking.banking_logic.models as models  #
 
 Base = models.Base
 
-from banking import banking_logic
+from banking import logic
 
-Base.metadata.create_all(banking_logic.engine)
+Base.metadata.create_all(logic.engine)

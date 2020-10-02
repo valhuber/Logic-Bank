@@ -7,10 +7,10 @@ from flask_appbuilder import AppBuilder, SQLA
 
 use_rules = True
 
-if use_rules:
+if use_rules:  # need logic_bank on path... add if not present
     cwd = os.getcwd()
     required_path_python_rules = cwd
-    required_path_python_rules = required_path_python_rules.replace("/banking_app", "")
+    required_path_python_rules = required_path_python_rules.replace("/banking/web_app", "")
 
     sys_path = ""
     required_path_present = False
@@ -28,13 +28,8 @@ if use_rules:
         print("NOT Fixing path (default PyCharm, set in VSC Launch Config): " +
               required_path_python_rules)
 
-    import banking.banking_logic.models as models
-    from logic_bank.util import row_prt, prt
-    from banking.banking_logic import session  # opens db, activates logic listener <--
-
-    from logic_bank.rule_bank import rule_bank_withdraw  # required to avoid circular imports
     from logic_bank.rule_bank import rule_bank_setup
-    from banking.banking_logic.banking_rules_bank import activate_basic_rules
+    from banking.logic.rules_bank import activate_basic_rules
 
 """
  Logging configuration

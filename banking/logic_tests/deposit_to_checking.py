@@ -1,8 +1,6 @@
 import datetime
-import os
-import sqlalchemy
-import banking.banking_logic.models as models
-from banking.banking_logic import session  # opens db, activates logic listener <--
+import banking.db.models as models
+from banking.logic import session  # opens db, activates logic listener <--
 
 delete_deposit = session.query(models.CHECKINGTRANS).filter(models.CHECKINGTRANS.TransId == 100).one()
 print("\ndelete checking trans, deleting row: " + str(delete_deposit) )

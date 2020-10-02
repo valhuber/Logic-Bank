@@ -1,9 +1,8 @@
 import datetime
-import banking.banking_logic.models as models
-from banking.banking_logic import session
+import banking.db.models as models
 from logic_bank.exec_row_logic.logic_row import LogicRow
 from logic_bank.rule import Rule
-from banking.banking_logic.models import CUSTOMER, CHECKING, CHECKINGTRANS, SAVING, SAVINGSTRANS, TRANSFERFUND
+from banking.db.models import CUSTOMER, CHECKING, CHECKINGTRANS, SAVING, SAVINGSTRANS, TRANSFERFUND
 
 def activate_basic_rules():
 
@@ -18,10 +17,10 @@ def activate_basic_rules():
             transID = row.TransId
             # need to lookup the From Acct to see if it is checking or savings - that way we can reverse the flow
             deposit = models.SAVINGSTRANS(TransId=transID, CustNum=toCustNum, AcctNum=acctNum, DepositAmt=transferAmt, WithdrawlAmt=0,
-                                            TransDate=trans_date)
+                                          TransDate=trans_date)
             logic_row.insert("Deposit to savings", deposit)
             withdrawl = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
-                                           DepositAmt=0, WithdrawlAmt=transferAmt, TransDate=trans_date)
+                                             DepositAmt=0, WithdrawlAmt=transferAmt, TransDate=trans_date)
             logic_row.insert("Withdraw from CHECKINGTRANS", withdrawl)
 
     Rule.sum(derive=CHECKING.Deposits, as_sum_of=CHECKINGTRANS.DepositAmt)

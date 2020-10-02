@@ -1,14 +1,12 @@
-import os
-import sqlalchemy
-import banking.banking_logic.models as models
-from banking.banking_logic import session  # opens db, activates logic listener <--
+import banking.db.models as models
+from banking.logic import session  # opens db, activates logic listener <--
 
 # first delete, so can add
 delete_savings = session.query(models.SAVING).filter(models.SAVING.CustNum == 2).delete()
 print("\ndelete savings, deleting: " + str(delete_savings) + "\n\n")
 session.commit()
 
-new_savings = models.SAVING(CustNum=2,AcctNum=3,Deposits=0,Withdrawls=0,AvailableBalance=0,ItemCount=0,AcctType='S')
+new_savings = models.SAVING(CustNum=2, AcctNum=3, Deposits=0, Withdrawls=0, AvailableBalance=0, ItemCount=0, AcctType='S')
 session.add(new_savings)
 session.commit()
 

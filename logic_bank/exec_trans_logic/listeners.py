@@ -82,7 +82,7 @@ def before_flush(a_session: session, a_flush_context, an_instances):
 
 def temp_debug(a_session, bug_explore, row_cache):
     """
-    do not delete - see description in nw/trans_tests/upd_order_reuse
+    do not delete - see description in nw/logic_tests/upd_order_reuse
     """
     for each_instance in a_session.dirty:
         table_name = each_instance.__tablename__

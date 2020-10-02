@@ -8,7 +8,7 @@ from sqlalchemy.orm import session
 
 from logic_bank.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
 from logic_bank.rule_bank import rule_bank_setup
-from banking.banking_logic.banking_rules_bank import activate_basic_rules
+from banking.logic.rules_bank import activate_basic_rules
 
 from logic_bank.util import prt
 
