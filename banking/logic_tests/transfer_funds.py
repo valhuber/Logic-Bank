@@ -47,7 +47,7 @@ else:
 session.expunge(verify_cust)
 
 """
-    ********* credit check *********
+    ********* Overdraft Funds Test *********
 """
 
 print("SHOULD FAIL")
@@ -64,7 +64,7 @@ verify_cust = session.query(models.CUSTOMER).filter(models.CUSTOMER.CustNum == 1
 logic_row = LogicRow(row=verify_cust, old_row=pre_cust, ins_upd_dlt="*", nest_level=0, a_session=session, row_sets=None)
 
 if not did_fail_as_expected:
-    logic_row.log("ERROR - credit check expected to fail, but succeeded")
+    logic_row.log("ERROR -overdraft checking expected to fail, but succeeded")
     assert False
 else:
-    logic_row.log("Credit Check Passed")
+    logic_row.log("Overdraft Funds Test rolled back transfer")
