@@ -38,7 +38,7 @@ and have been **proven in practice** -
 
 
 ## Architecture
-<figure><img src="images/architecture.png" width="800"><figcaption>Architecture</figcaption></figure>
+<figure><img src="images/architecture.png" width="800"></figure>
 
 
  1. **Declare** logic as Python functions (see example below).
@@ -81,7 +81,7 @@ pip install -i https://test.pypi.org/simple/ logic-bank
 Logic is declared as spreadsheet-like rules as shown below
 from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
 which implements the *check credit* requirement:
-<figure><img src="images/example.png" width="800"><figcaption>Architecture</figcaption></figure>
+<figure><img src="images/example.png" width="800"></figure>
 
 The specification is fully executable, and governs around a
 dozen transactions.  Let's look at **Add Order (Check Credit) -**
@@ -136,6 +136,7 @@ so it is adjusted
 All of the dependency management to see which attribute have changed,
 logic ordering, the SQL commands to read and adjust rows, and the chaining
 are fully automated by the engine, based solely on the rules above.
+See the [detail walk-through here](../../wiki/Rules-Enginesi#example-add-order---multi-table-adjustment-chaining)
 
 Reuse over Use Cases is automatic, so the same rules
 automate deleting and updating orders.
@@ -167,6 +168,9 @@ _their_ interpretation of working software.
 The [fab-quick-start](https://github.com/valhuber/fab-quick-start/wiki)
 project enables you to build a basic web app in minutes.
 
+
+<figure><img src="images/fab.png" width="800"></figure>
+
 This project has already generated such an app, which you can run like this:
 
 ```
@@ -176,6 +180,12 @@ flask run
 ```
 
 Login: user = admin, password = p
+
+You can
+1. Navigate to Order 11011
+2. Change the Shipped Date
+    * The app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
+    * The logic for this update is interesting, [explored here](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade)
 
 ##### Iteration - Automatic Ordering
 Rules are _self-organizing_ - they recognize their interdependencies,
