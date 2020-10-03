@@ -28,12 +28,12 @@ Logic Bank can return meaningful savings in time and cost.
 [**See the Logic Bank Overview**](../../wiki/Home) for more
 on the Business Case, and a detailed walk-through.
 
-Skeptical?  You should be.  Choosing an automated approach with
+Skeptical?  You should be.  Choosing an automation
 technology ill-suited to transaction processing has
 serious implications for performance, quality and manageability.
 Unlike familiar rules engines, Logic Bank rules are specifically
 designed to be **scalable and extensible**,
-and have been proven in practice -
+and have been ***proven in practice** -
 [**see Rules Engines**](../../wiki/Rules-Engines),
 
 
