@@ -38,7 +38,7 @@ and have been **proven in practice** -
 
 
 ## Architecture
-<figure><img src="images/architecture.png" width="500"><figcaption>Architecture</figcaption></figure>
+<figure><img src="images/architecture.png" width="800"><figcaption>Architecture</figcaption></figure>
 
 
  1. **Declare** logic as Python functions (see example below).
@@ -81,24 +81,7 @@ pip install -i https://test.pypi.org/simple/ logic-bank
 Logic is declared as spreadsheet-like rules as shown below
 from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
 which implements the *check credit* requirement:
-```python
-def activate_basic_check_credit_rules():
-    """ Check Credit Requirement:
-        * the balance must not exceed the credit limit,
-        * where the balance is the sum of the unshipped order totals
-        * which is the rollup of OrderDetail Price * Quantities:
-    """
-
-    Rule.constraint(validate=Customer, as_condition=lambda row: row.Balance <= row.CreditLimit,
-                    error_msg="balance ({row.Balance}) exceeds credit ({row.CreditLimit})")
-    Rule.sum(derive=Customer.Balance, as_sum_of=Order.AmountTotal,
-             where=lambda row: row.ShippedDate is None)  # *not* a sql select sum
-    
-    Rule.sum(derive=Order.AmountTotal, as_sum_of=OrderDetail.Amount)
-   
-    Rule.formula(derive=OrderDetail.Amount, as_expression=lambda row: row.UnitPrice * row.Quantity)
-    Rule.copy(derive=OrderDetail.UnitPrice, from_parent=Product.UnitPrice)
-```
+<figure><img src="images/example.png" width="800"><figcaption>Architecture</figcaption></figure>
 
 The specification is fully executable, and governs around a
 dozen transactions.  Let's look at **Add Order (Check Credit) -**

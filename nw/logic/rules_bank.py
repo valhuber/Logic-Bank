@@ -42,13 +42,13 @@ def activate_basic_check_credit_rules():
     Rule.formula(derive=OrderDetail.Amount, as_expression=lambda row: row.UnitPrice * row.Quantity)
     Rule.copy(derive=OrderDetail.UnitPrice, from_parent=Product.UnitPrice)
 
+    Rule.commit_row_event(on_class=Order, calling=congratulate_sales_rep)
+
     Rule.formula(derive=OrderDetail.ShippedDate, as_exp="row.OrderHeader.ShippedDate")
 
     Rule.sum(derive=Product.UnitsShipped, as_sum_of=OrderDetail.Quantity,
              where="row.ShippedDate is not None")
     Rule.formula(derive=Product.UnitsInStock, calling=units_in_stock)
-
-    Rule.commit_row_event(on_class=Order, calling=congratulate_sales_rep)
 
     Rule.count(derive=Customer.UnpaidOrderCount, as_count_of=Order,
              where=lambda row: row.ShippedDate is None)  # *not* a sql select sum...
