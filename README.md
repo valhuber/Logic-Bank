@@ -182,10 +182,12 @@ flask run
 Login: user = admin, password = p
 
 You can
-1. Navigate to Order 11011
-2. Change the Shipped Date
+1. Navigate to Order 11011 (a _multi-page_ web app)
+2. Verify logic enforcement - change the Shipped Date
     * The app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
-    * The logic for this update is interesting, [explored here](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade)
+    * The logic for this update is interesting:
+        * See the console log
+        * [Explore logic operation here](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade)
 
 ##### Iteration - Automatic Ordering
 Rules are _self-organizing_ - they recognize their interdependencies,
