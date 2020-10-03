@@ -34,7 +34,7 @@ serious implications for performance, quality and manageability.
 Unlike familiar rules engines, Logic Bank rules are specifically
 designed to be **scalable and extensible**,
 and have been **proven in practice** -
-[**see Rules Engines**](../../wiki/Rules-Engines),
+[**see Rules Engines**](../../wiki/Rules-Engines).
 
 
 ## Architecture
