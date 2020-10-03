@@ -207,6 +207,7 @@ TL;DR - using your IDE or command line:
 git fork / clone
 cd Logic-Bank
 virtualenv venv
+# windows: .\venv\Scripts\activate
 source venv/bin/activate
 pip install -r requirements.txt
 ```
