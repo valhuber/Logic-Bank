@@ -24,8 +24,8 @@ Logic Bank is:
 
 
 Since transaction logic is a significant aspect of development,
-Logic Bank can return meaningful savings in time and cost - 
-[**see the Logic Bank Overview**](../../wiki/Home) for more
+Logic Bank can return meaningful savings in time and cost. 
+[**See the Logic Bank Overview**](../../wiki/Home) for more
 on the Business Case, and a detailed walk-through.
 
 Skeptical?  You should be.  Choosing an automated approach with
