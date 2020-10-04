@@ -2,10 +2,6 @@ import os
 import sys
 from datetime import datetime
 
-import banking.db.models as models
-from banking.logic import session  # opens db, activates logic listener <--
-from logic_bank.exec_row_logic.logic_row import LogicRow
-
 cwd = os.getcwd()   # eg, /Users/val/python/pycharm/logic-bank/nw/tests
 required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/Logic-Bank
 required_path_python_rules = required_path_python_rules.replace("/banking/tests", "")
@@ -33,6 +29,10 @@ run_environment_info += "Using Python: " + sys.version + "\n\n"
 run_environment_info += "At: " + str(datetime.now()) + "\n\n"
 
 print("\n" + run_environment_info + "\n\n")
+
+import banking.db.models as models  # must follow required_path fix
+from banking.logic import session  # opens db, activates logic listener <--
+from logic_bank.exec_row_logic.logic_row import LogicRow
 
 from banking.tests import setup_db  # careful - this must follow fix-path, above
 setup_db()
