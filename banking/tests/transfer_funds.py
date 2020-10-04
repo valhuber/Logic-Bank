@@ -25,13 +25,14 @@ else:
     pass
     print("NOT Fixing path (default PyCharm, set in VSC Launch Config)")
 
-path_info = "Run Environment info...\n\n"\
-            + "Current Working Directory: " + cwd + "\n\n"\
-            + "sys.path: (Python imports)\n" + sys_path + "\n"\
-            + "From: " + sys.argv[0] + "\n\n"\
-            + "Using Python: " + sys.version + "\n\n"\
-            + "At: " + str(datetime.now()) + "\n\n"
-print("\n" + path_info + "\n\n")
+run_environment_info = "Run Environment info...\n\n"
+run_environment_info += " Current Working Directory: " + cwd + "\n\n"
+run_environment_info += "sys.path: (Python imports)\n" + sys_path + "\n"
+run_environment_info += "From: " + sys.argv[0] + "\n\n"
+run_environment_info += "Using Python: " + sys.version + "\n\n"
+run_environment_info += "At: " + str(datetime.now()) + "\n\n"
+
+print("\n" + run_environment_info + "\n\n")
 
 from banking.tests import setup_db  # careful - this must follow fix-path, above
 setup_db()
