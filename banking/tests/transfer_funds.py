@@ -33,6 +33,9 @@ path_info = "Run Environment info...\n\n"\
             + "At: " + str(datetime.now()) + "\n\n"
 print("\n" + path_info + "\n\n")
 
+from banking.tests import setup_db  # careful - this must follow fix-path, above
+setup_db()
+
 pre_cust = session.query(models.CUSTOMER).filter(models.CUSTOMER.CustNum == 1).one()
 session.expunge(pre_cust)
 

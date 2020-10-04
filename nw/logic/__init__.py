@@ -69,7 +69,7 @@ def nw_before_flush(a_session: session, a_flush_context, an_instances):
 2 - Register listeners (either hand-coded ones above, or the logic-engine listeners).
 """
 
-print("\n" + prt("nw/logic/__init__.py BEGIN - setup logging, connect to db, register listeners\n"))
+print("\n" + prt("BEGIN - setup logging, connect to db, register listeners\n"))
 
 # Initialize Logging
 import logging
@@ -96,13 +96,7 @@ if do_engine_logging:
 basedir = os.path.abspath(os.path.dirname(__file__))
 basedir = os.path.dirname(basedir)
 
-print("\n****************\n"
-      "  IMPORTANT - create database.db from database-gold.db in " + basedir + "/nw/db/" +
-      "\n****************")
-
 nw_loc = os.path.join(basedir, "db/database.db")
-nw_source = os.path.join(basedir, "db/database-gold.db")
-copyfile(src=nw_source, dst=nw_loc)
 
 conn_string = "sqlite:///" + nw_loc
 engine = sqlalchemy.create_engine(conn_string, echo=False)  # sqlalchemy sqls...
@@ -123,4 +117,4 @@ else:
     event.listen(session, "before_commit", nw_before_commit)
     event.listen(session, "before_flush", nw_before_flush)
 
-print("\n" + prt("nw/logic/__init__.py END - connected, session created, listeners registered\n"))
+print("\n" + prt("END - connected, session created, listeners registered\n"))

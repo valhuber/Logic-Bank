@@ -126,7 +126,9 @@ def prt(a_msg: str) -> str:
     function_name = call_frame[1][3]
     file_name = call_frame[1][1]
     file_name = os.path.basename(file_name)
-    result = f'@{file_name}#{function_name}(): {a_msg}'
+    file_path = os.path.dirname(call_frame[1][1])
+    containing_folder = os.path.basename(file_path)
+    result = f'{containing_folder}/{file_name}#{function_name}(): {a_msg}'
     return result
 
 

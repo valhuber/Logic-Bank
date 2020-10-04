@@ -29,6 +29,9 @@ path_info = "Run Environment info...\n\n"\
             + "At: " + str(datetime.now()) + "\n\n"
 print("\n" + path_info + "\n\n")
 
+from nw.tests import setup_db  # careful - this must follow fix-path, above
+setup_db()
+
 import nw.db.models as models
 from nw.logic import session  # opens db, activates logic listener <--
 
