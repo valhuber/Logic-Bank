@@ -3,8 +3,8 @@ TODO major - designates significant unimplemented
 
 Major friction due to Python Path
     Pycharm sets it (thankyou), but cmd-line, vsc (etc) do not
-    Should remove Project Structure / Content Root = /Users/val/python/pycharm/Logic-Bank
-    Not yet done
+    Run > Configurations, unset Source & Content Roots
+    This should make debug runs == cmd-line, vsc
 
 Significant bug fixes:
     See nw/trans_tests/upd_order_reuse, and logic_engine/exec_row_logic/logic_row#save_altered_parents
