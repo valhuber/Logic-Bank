@@ -204,7 +204,7 @@ the engine will reorganize execution order and database access, automatically
 
 ## Installation
 ### Verify Pre-reqs: Python3, virtualenv, pip3
-Ensure you have these pre-reqs, or install them as [decscribed here](../../Sample-Project---Setup).
+Ensure you have these pre-reqs, or install them as [decscribed here](../../wiki/Sample-Project---Setup).
 We also recommend an IDE such as PyCharm, VSCode, etc.
 
 ### Install Logic-Bank
