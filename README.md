@@ -23,7 +23,8 @@ Logic Bank is:
 - **Manageable:** develop and debug your rules in IDEs, manage them in SCS systems (such as `git`), using existing procedures
 
 
-Since transaction logic is a significant aspect of development,
+Since transaction logic is nearly half of most database systems,
+and rules automate in excess of 95% of the logic,
 Logic Bank can return meaningful savings in time and cost. 
 [**See the Logic Bank Overview**](../../wiki/Home) for more
 on the Business Case, and a detailed walk-through.
