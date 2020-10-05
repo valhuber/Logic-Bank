@@ -105,7 +105,7 @@ session_maker = sqlalchemy.orm.sessionmaker()
 session_maker.configure(bind=engine)
 session = session_maker()
 
-by_rules = True  # True => use rules, False => use hand code (for comparison)
+by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
 rule_list = None
 db = None
 if by_rules:

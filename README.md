@@ -84,9 +84,7 @@ which implements the *check credit* requirement:
 <figure><img src="images/example.png" width="800"></figure>
 
 The specification is fully executable, and governs around a
-dozen transactions.  Let's look at **Add Order (Check Credit) -**
-enter an Order / OrderDetails,
-and rollup to AmountTotal / Balance to check CreditLimit.
+dozen transactions.
 
 This representatively complex transaction illustrates
 common logic execution patterns, described below.
@@ -102,7 +100,7 @@ from nw.logic import session  # opens db, activates logic listener <--
 This executes [`nw/logic/__init__.py`](nw/logic/__init__.py),
 which sets up the rule engine:
 ```python
-by_rules = True  # True => use rules, False => use hand code (for comparison)
+by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
 if by_rules:
     rule_bank_setup.setup(session, engine)     # setup rules engine
     activate_basic_check_credit_rules()        # loads rules above
@@ -115,13 +113,14 @@ Let's see how it operates.
 
 ## Logic Execution: Add Order - Watch, React, Chain
 
-<figure><img src="images/check-credit.png" width="500"><figcaption>The <b>Add Order</b> example illustrates chaining as OrderDetails are added:
-</figcaption></figure>
+<figure><img src="images/check-credit.png" width="500"></figure>
 
-Let's see how __Watch / React / Chain__ operates to
-check the balance when adding an order:
 
-1. The `OrderDetail.UnitPrice` is referenced from the Product
+The `add_order` example illustrates how
+__Watch / React / Chain__ operates to
+check the Credit Limit:
+
+1. The `OrderDetail.UnitPrice` is referenced from the Product,
 so it is copied
 
 1. OrderDetails are referenced by the Orders' `AmountTotal` sum rule,
@@ -136,9 +135,9 @@ so it is adjusted
 All of the dependency management to see which attribute have changed,
 logic ordering, the SQL commands to read and adjust rows, and the chaining
 are fully automated by the engine, based solely on the rules above.
-See the [detail walk-through here](../../wiki/Rules-Enginesi#example-add-order---multi-table-adjustment-chaining)
+See the [detail walk-through here](../../wiki/Rules-Enginesi#example-add-order---multi-table-adjustment-chaining).
 
-Reuse over Use Cases is automatic, so the same rules
+**Reuse over Use Cases is automatic,** so the same rules
 automate deleting and updating orders.
 This is how 5 rules represent the same logic as 200 lines of code.
 
@@ -157,7 +156,7 @@ Here's how rules can help.
 The examples above illustrate how just a few rules can replace 
 [pages of code](../../wiki/by-code).
 
-##### Collaboration - Running Screens
+##### Collaboration: Running Screens - Automatic Basic Web App
 
 Certainly business users are more easily able to
 read rules than code.  But still, rules are
@@ -171,10 +170,12 @@ project enables you to build a basic web app in minutes.
 
 <figure><img src="images/fab.png" width="800"></figure>
 
-This project has already generated such an app, which you can run like this:
+This project has already generated such an app, which you can run like this
+once you've finished the Installation process:
 
 ```
 cd nw_app
+# windows set FLASK_APP=app
 export FLASK_APP=app
 flask run
 ```
@@ -184,10 +185,8 @@ Login: user = admin, password = p
 You can
 1. Navigate to Order 11011 (a _multi-page_ web app)
 2. Verify logic enforcement - change the Shipped Date
-    * The app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
-    * The logic for this update is interesting:
-        * See the console log
-        * [Explore logic operation here](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade)
+    * The web app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
+    * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) - check out the console log
 
 ##### Iteration - Automatic Ordering
 Rules are _self-organizing_ - they recognize their interdependencies,
@@ -211,8 +210,16 @@ virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+To run:
+1. Run the Web App as described under Agile / Collaboration, above
 
-Logic Bank consists of 2 project repositories:
+2. Run the `nw/tests` programs under your IDE or the
+command line; the **log** depicts logic execution
+for `add_order` and `upd_order_shipped,` as
+[described here](../../wiki/home).
+
+##### What's in the project
+Logic Bank consists of 2 github projects:
 `Logic Bank` (this project), and `Logic Bank Examples.`
 They have a number of elements in common:
 
@@ -226,8 +233,8 @@ these both contain
 
     * [Flask AppBuilder apps](nw/basic_web_app) (as described above)
     
-    * [Logic](nw/logic) - models and rules (and, for `'nw',
-    the manual code for contrast to rules)
+    * [Logic](nw/logic) - models and rules (and for `nw`,
+    the manual `legacy` code for contrast to rules)
     
 * The `nw` sample illustrates comparisons of Business logic, both
 [by code](../../wiki/by-code) and by rules (shown above).
