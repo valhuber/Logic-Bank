@@ -152,11 +152,11 @@ The core tenant of agile is _working software,_
 driving _collaboration,_ for _rapid iterations._
 Here's how rules can help.
 
-##### Working Software _Now_
+#### Working Software _Now_
 The examples above illustrate how just a few rules can replace 
 [pages of code](../../wiki/by-code).
 
-##### Collaboration: Running Screens - Automatic Basic Web App
+#### Collaboration: Running Screens - Automatic Basic Web App
 
 Certainly business users are more easily able to
 read rules than code.  But still, rules are
@@ -188,7 +188,7 @@ You can
     * The web app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
     * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) - check out the console log
 
-##### Iteration - Automatic Ordering
+#### Iteration - Automatic Ordering
 Rules are _self-organizing_ - they recognize their interdependencies,
 and order their execution and database access (pruning, adjustments etc)
 accordingly.  This means:
