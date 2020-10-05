@@ -11,6 +11,7 @@ if use_rules:  # need logic_bank on path... add if not present
     cwd = os.getcwd()
     required_path_python_rules = cwd
     required_path_python_rules = required_path_python_rules.replace("/banking/basic_web_app", "")
+    required_path_python_rules = required_path_python_rules.replace("\\banking\\basic_web_app", "")
 
     sys_path = ""
     required_path_present = False
