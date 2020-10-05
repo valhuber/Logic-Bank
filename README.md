@@ -16,7 +16,7 @@ Logic Bank is:
 
 - **Extensible:** logic consists of rules (see below), plus standard Python code
 
-- **Multi-table:** rules like `sum` automate multi-table transactions
+- **Multi-table:** rules like `sum` automate complex, multi-table transactions
 
 - **Scalable:** rules are automatically pruned and optimized; for example, sums are processed as *1 row adjustment updates,* rather than expensive SQL aggregate queries
 
