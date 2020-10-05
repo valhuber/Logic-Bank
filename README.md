@@ -20,7 +20,7 @@ Logic Bank is:
 
 - **Scalable:** rules are automatically pruned and optimized; for example, sums are processed as *1 row adjustment updates,* rather than expensive SQL aggregate queries
 
-- **Manageable:** develop and debug your rules in IDEs, manage it in SCS systems (such as `git`) using existing procedures
+- **Manageable:** develop and debug your rules in IDEs, manage them in SCS systems (such as `git`), using existing procedures
 
 
 Since transaction logic is a significant aspect of development,
