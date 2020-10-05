@@ -203,7 +203,7 @@ the engine will reorganize execution order and database access, automatically
 
 
 ## Installation
-### Verify Pre-reqs: Python3, virtualenv, pip3
+### Verify Pre-reqs: Python 3.8, virtualenv, pip3
 Ensure you have these pre-reqs, or install them as [decscribed here](../../wiki/Explore-Logic-Bank).
 We also recommend an IDE such as PyCharm, VSCode, etc.
 
