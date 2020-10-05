@@ -211,7 +211,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-##### See it run
+#### See it run
 To run:
 1. Run the Web App as described under Agile / Collaboration, above
 
@@ -220,7 +220,7 @@ command line; start with `add_order` and `upd_order_shipped,`
 and see the [walk-throughs here](../../wiki/home).
  - Note: the **log** depicts logic execution
 
-##### What's in the project
+#### What's in the project
 Logic Bank consists of 2 github projects:
 `Logic Bank` (this project), and `Logic Bank Examples.`
 They have a number of elements in common:
@@ -258,7 +258,7 @@ They differ in how the logic engine is installed:
 
 
 
-##### Status: Running, Under Development
+#### Status: Running, Under Development
 Functionally complete, 9/29/2020, tested for 2 databases.
 
 Incubation - ready to explore and provide feedback
