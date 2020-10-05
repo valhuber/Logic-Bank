@@ -24,7 +24,7 @@ Logic Bank is:
 
 
 Since transaction logic is nearly half of most database systems,
-and rules automate in excess of **95% of the logic 40X more concisely,**
+and rules automate over **95% of the logic 40X more concisely,**
 Logic Bank can return meaningful savings in time and cost. 
 See the [**Logic Bank Overview**](../../wiki/Home) for more
 on the Business Case, and a detailed walk-through.
@@ -34,8 +34,8 @@ technology ill-suited to transaction processing has
 serious implications for performance, quality and manageability.
 Unlike familiar rules engines, Logic Bank rules are specifically
 designed to be **scalable and extensible**,
-and have been **proven in practice** -
-[**see Rules Engines**](../../wiki/Rules-Engines).
+and have been **proven in practice** - see
+[**Rules Engines**](../../wiki/Rules-Engines).
 
 
 ## Architecture
