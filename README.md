@@ -211,14 +211,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-##### Run
+##### See it run
 To run:
 1. Run the Web App as described under Agile / Collaboration, above
 
 2. Run the `nw/tests` programs under your IDE or the
-command line; the **log** depicts logic execution
-for `add_order` and `upd_order_shipped,` as
-[described here](../../wiki/home).
+command line; start with `add_order` and `upd_order_shipped,`
+and see the [walk-throughs here](../../wiki/home).
+ - Note: the **log** depicts logic execution
 
 ##### What's in the project
 Logic Bank consists of 2 github projects:
