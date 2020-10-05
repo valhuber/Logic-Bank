@@ -105,14 +105,14 @@ session_maker = sqlalchemy.orm.sessionmaker()
 session_maker.configure(bind=engine)
 session = session_maker()
 
-by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
+by_rules = False  # True => use rules, False => use legacy hand code (for comparison)
 rule_list = None
 db = None
 if by_rules:
     rule_bank_setup.setup(session, engine)
     activate_basic_check_credit_rules()
     rule_bank_setup.validate(session, engine)  # checks for cycles, etc
-else:
+else:  # only tested for tests/add_order, other tests likely missing logic
     # setup to illustrate hand-coding alternative - target, modifier, function
     event.listen(session, "before_commit", nw_before_commit)
     event.listen(session, "before_flush", nw_before_flush)

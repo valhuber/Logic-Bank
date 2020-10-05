@@ -60,7 +60,8 @@ class LogicRow:
         self.table_meta = None
         if self.row is not None:
             self.table_meta = row.metadata.tables[type(self.row).__name__]
-        self.inspector = Inspector.from_engine(self.engine)
+        if self.engine is not None:  # e.g, for testing legacy logic (no RuleBank)
+            self.inspector = Inspector.from_engine(self.engine)
 
     def __str__(self):
         result = ".."
