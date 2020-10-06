@@ -82,12 +82,22 @@ pip install -i https://test.pypi.org/simple/ logic-bank
 Logic is declared as spreadsheet-like rules as shown below
 from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
 which implements\ the *check credit* requirement.
-These 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code).
+This illustrates the advantages of a _declarative_ approach
+relative to a legacy _procedural_ approach:
+
+* **Conciseness:** these 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code).\
+And they are more readable.
+
+* **Quality:** rules automatically govern all transactions; these
+rules governs around a dozen transactions (delete OrderDetail,
+change OrderDetail quantity, change OrderDetail Product,
+change *both*, etc)
+
+* **Maintainability:** rule execution is automatically ordered
+per system-discovered dependencies.  So for maintenance,
+just change the rules - the system will re-order and re-optimize.
 
 <figure><img src="images/example.png" width="800"></figure>
-
-The specification is fully executable, and governs around a
-dozen transactions.
 
 This representatively complex transaction illustrates
 common logic execution patterns, described below.
@@ -147,7 +157,6 @@ This is how 5 rules represent the same logic as 200 lines of code.
 To see more on how __watch__, __react__ and __chain__ 
 logic automates and optimizes multi-table transactions,
 [click here](../../wiki/Rules-Engines#multi-table-logic-execution).
-
 
 
 ## An Agile Perspective
