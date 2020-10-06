@@ -47,10 +47,11 @@ session.expunge(pre_cust)
 trans_date = datetime(2020, 10, 1)
 deposit = models.CHECKINGTRANS(TransId=1, CustNum=1, AcctNum=1,
                                DepositAmt=100, WithdrawlAmt=0, TransDate=trans_date)
-print("\n\nCustomer Account Deposit Checking Setup - Deposit $100 to CHECKINGTRANS: " + str(deposit))
+print("\n\nCustomer Account Deposit Checking Setup - Deposit $100 to CHECKINGTRANS ")
 session.add(deposit)
 session.commit()
 
+print("")
 verify_cust = session.query(models.CUSTOMER).filter(models.CUSTOMER.CustNum == 1).one()
 logic_row = LogicRow(row=verify_cust, old_row=pre_cust, ins_upd_dlt="*", nest_level=0, a_session=session, row_sets=None)
 if verify_cust.TotalBalance == 100.0:
@@ -62,14 +63,14 @@ else:
 session.expunge(verify_cust)
 
 """
-    ********* Transfer 10 from checking to savings *********
+    ********* Transfer 10 from checking to savings (main test) *********
 """
-trasfer = models.TRANSFERFUND(TransId=2, FromCustNum=1, FromAcct=1, ToCustNum=1, ToAcct=1, TransferAmt=10, TransDate=trans_date)
-session.add(trasfer)
+transfer = models.TRANSFERFUND(TransId=2, FromCustNum=1, FromAcct=1, ToCustNum=1, ToAcct=1, TransferAmt=10, TransDate=trans_date)
+print("\n\nTransfer 10 from checking to savings (main test) ")
+session.add(transfer)
 session.commit()
 
-print("\ncust should still have 100 in TotalBalance completed: " + str(verify_cust.TotalBalance) + "\n\n")
-#print("\ncust should still have 10 in Savings completed: " + str(verify_cust.SavingAcctBal) + "\n\n")
+print("")
 verify_cust = session.query(models.CUSTOMER).filter(models.CUSTOMER.CustNum == 1).one()
 logic_row = LogicRow(row=verify_cust, old_row=pre_cust, ins_upd_dlt="*", nest_level=0, a_session=session, row_sets=None)
 if verify_cust.TotalBalance == 100.0:
@@ -84,7 +85,7 @@ session.expunge(verify_cust)
     ********* Overdraft Funds Test *********
 """
 
-print("SHOULD FAIL")
+print("\n\n********* Overdraft Funds Test ********* Verify constraint makes commit fail")
 trasfer2 = models.TRANSFERFUND(TransId=3, FromCustNum=1, FromAcct=1, ToCustNum=1, ToAcct=1, TransferAmt=1000, TransDate=trans_date)
 session.add(trasfer2)
 did_fail_as_expected = False
@@ -94,6 +95,7 @@ except:
     session.rollback()
     did_fail_as_expected = True
 
+print("")
 verify_cust = session.query(models.CUSTOMER).filter(models.CUSTOMER.CustNum == 1).one()
 logic_row = LogicRow(row=verify_cust, old_row=pre_cust, ins_upd_dlt="*", nest_level=0, a_session=session, row_sets=None)
 

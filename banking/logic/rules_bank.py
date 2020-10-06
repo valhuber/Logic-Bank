@@ -7,6 +7,11 @@ from banking.db.models import CUSTOMER, CHECKING, CHECKINGTRANS, SAVING, SAVINGS
 def activate_basic_rules():
 
     def transfer_funds(row: TRANSFERFUND, old_row: TRANSFERFUND, logic_row: LogicRow):
+        """
+        Command Pattern: insert (and save) transfer_funds row
+
+        Rules then adjust Checking and Customer rollups, and validate credit
+        """
         if logic_row.ins_upd_dlt == "ins" or True:  # logic engine fills parents for insert
             logic_row.log("Transfer from source to target")
             fromCustNum = row.FromCustNum
@@ -19,9 +24,9 @@ def activate_basic_rules():
             deposit = models.SAVINGSTRANS(TransId=transID, CustNum=toCustNum, AcctNum=acctNum, DepositAmt=transferAmt, WithdrawlAmt=0,
                                           TransDate=trans_date)
             logic_row.insert("Deposit to savings", deposit)
-            withdrawl = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
+            withdrawal = models.CHECKINGTRANS(TransId=transID, CustNum=fromCustNum, AcctNum=acctNum,
                                              DepositAmt=0, WithdrawlAmt=transferAmt, TransDate=trans_date)
-            logic_row.insert("Withdraw from CHECKINGTRANS", withdrawl)
+            logic_row.insert("Withdraw from CHECKINGTRANS", withdrawal)
 
     Rule.sum(derive=CHECKING.Deposits, as_sum_of=CHECKINGTRANS.DepositAmt)
     Rule.sum(derive=CHECKING.Withdrawls, as_sum_of=CHECKINGTRANS.WithdrawlAmt)
