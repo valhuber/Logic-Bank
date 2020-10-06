@@ -27,7 +27,7 @@ class LogicRow:
 
     Helper Methods (get_parent_logic_row(role_name), log, etc)
 
-    Called client, from before_flush listeners, and here for parent/child chaining
+    Called from client, from before_flush listeners, and here for parent/child chaining
     """
 
     def __init__(self, row: base, old_row: base, ins_upd_dlt: str, nest_level: int,
