@@ -73,12 +73,12 @@ For those not familiar, this is basically
 Customers, Orders, OrderDetails and Products,
 as shown in the diagrams below.
 
-##### Install the Logic Bank
+#### Install the Logic Bank
 ```
 pip install -i https://test.pypi.org/simple/ logic-bank
 ```
 
-##### Declare rules using Python
+#### Declare rules using Python
 Logic is declared as spreadsheet-like rules as shown below
 from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
 which implements\ the *check credit* requirement.
@@ -102,7 +102,7 @@ just change the rules - the system will re-order and re-optimize.
 This representatively complex transaction illustrates
 common logic execution patterns, described below.
 
-##### Activate Rules
+#### Activate Rules
 To test our rules, we use
 [`nw/logic_tests/add_order.py`](nw/tests/add_order.py).
 It activates the rules using this import:
