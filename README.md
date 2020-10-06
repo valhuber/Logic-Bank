@@ -249,11 +249,9 @@ and see the [walk-throughs here](../../wiki/home).
  - Note: the **log** depicts logic execution
 
 #### What's in the project
-Logic Bank consists of 2 github projects:
-`Logic Bank` (this project), and `Logic Bank Examples.`
-They have a number of elements in common:
+Logic Bank consists of:
 
-* They both have copies of two test database systems - `nw` and `banking`;
+* Two test database systems - `nw` and `banking`;
 these both contain
 
     * [Databases](nw/db) sqlite - no install required
@@ -269,21 +267,20 @@ these both contain
 * The `nw` sample illustrates comparisons of Business logic, both
 [by code](../../wiki/by-code) and by rules (shown above).
 
-They differ in how the logic engine is installed:
-* `Logic Bank` - this project
+* The `logic_bank` engine source code
 
-    * Includes Logic Bank source code and documentation
-    
-    * Click [here](../../wiki/Explore-Logic-Bank)
+To explore:
+
+* Click [here](../../wiki/Explore-Logic-Bank)
     for install / operations procedures
     
-    * Click [here](../../wiki/Logic-Walkthrough) for a
+* Click [here](../../wiki/Logic-Walkthrough) for a
     short overview of internal logic execution
-    
-* `Logic Bank Examples` - [here](../../wiki/Sample-Project---Setup)
 
-    * Install instructions for creating your own projects
-
+#### See also the Logic-Bank-Examples project
+The `Logic Bank Examples` [here](../../wiki/Sample-Project---Setup)
+contains the same example, but _not_ the `logic_bank` engine source code.
+It uses the logic engine via `pip install`, as you would for your own projects
 
 
 #### Status: Running, Under Development
