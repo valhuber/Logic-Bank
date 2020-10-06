@@ -175,7 +175,8 @@ This project has already generated such an app, which you can run like this
 once you've finished the Installation process:
 
 ```
-cd nw_app
+cd Logic-Bank
+cd nw/basic_web_app
 # windows set FLASK_APP=app
 export FLASK_APP=app
 flask run
@@ -185,7 +186,9 @@ Login: user = admin, password = p
 
 You can
 1. Navigate to Order 11011 (a _multi-page_ web app)
-2. Verify logic enforcement - change the Shipped Date
+2. Click Edit so you can make changes
+3. Change the Shipped Date
+3. Verify logic enforcement
     * The web app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
     * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) - check out the console log
 
@@ -202,7 +205,13 @@ the engine will reorganize execution order and database access, automatically
 
 
 ## Installation
-TL;DR - using your IDE or command line: 
+### Verify Pre-reqs: Python 3.8, virtualenv, pip3
+Ensure you have these pre-reqs, or install them as [decscribed here](../../wiki/Explore-Logic-Bank).
+We also recommend an IDE such as PyCharm, VSCode, etc.
+
+### Install Logic-Bank
+In your IDE or Command Line:
+
 ```
 git fork / clone
 cd Logic-Bank
@@ -212,7 +221,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-#### See it run
+#### Verify and Run
 To run:
 1. Run the Web App as described under Agile / Collaboration, above
 
