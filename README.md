@@ -111,8 +111,8 @@ if by_rules:
 else:
     # ... conventional after_flush listeners (to see rules/code contrast)
 ```
-This is what replaces 200 lines of [conventional code.](../../wiki/by-code)
-Let's see how it operates.
+
+Let's see how logic operates.
 
 ## Logic Execution: Add Order - Watch, React, Chain
 
