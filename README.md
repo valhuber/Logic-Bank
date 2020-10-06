@@ -85,8 +85,8 @@ which implements\ the *check credit* requirement.
 This illustrates the advantages of a _declarative_ approach
 relative to a legacy _procedural_ approach:
 
-* **Conciseness:** these 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code).\
-And they are more readable.
+* **Conciseness:** these 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code),
+and are far more readable.
 
 * **Quality:** rules automatically govern all transactions; these
 rules governs around a dozen transactions (delete OrderDetail,
