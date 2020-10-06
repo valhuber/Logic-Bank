@@ -99,6 +99,13 @@ just change the rules - the system will re-order and re-optimize.
 
 <figure><img src="images/example.png" width="800"></figure>
 
+Note the Python integration:
+
+* Rules are stated in Python, so you get IDE features like type checking,
+code completion, source code management, debugging (the diagram shows a breakpoint in a rule)
+
+* Rules are extensible - they can call Python code (see `congratulate_sales_rep`)
+
 This representatively complex transaction illustrates
 common logic execution patterns, described below.
 
