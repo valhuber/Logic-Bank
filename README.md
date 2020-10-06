@@ -81,7 +81,9 @@ pip install -i https://test.pypi.org/simple/ logic-bank
 ##### Declare rules using Python
 Logic is declared as spreadsheet-like rules as shown below
 from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
-which implements the *check credit* requirement:
+which implements\ the *check credit* requirement.
+These 5 rules replace [**this legacy code**](../../wiki/by-code).
+
 <figure><img src="images/example.png" width="800"></figure>
 
 The specification is fully executable, and governs around a
