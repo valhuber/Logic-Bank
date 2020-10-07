@@ -50,7 +50,7 @@ and have been **proven in practice** - see
   is automatically shared, whether for hand-written code (Flask apps, APIs)
   or via generators such as Flask AppBuilder.
 
- 3. The **Logic Bank** engine handles sqlalchemy `before_flush` events on
+ 3. The **Logic Bank** engine handles SQLAlchemy `before_flush` events on
 `Mapped Tables`
 
  4. The logic engine operates much like a spreadsheet:
