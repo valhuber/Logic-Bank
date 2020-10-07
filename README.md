@@ -161,7 +161,7 @@ and the transaction is rolled back)
 All of the dependency management to see which attribute have changed,
 logic ordering, the SQL commands to read and adjust rows, and the chaining
 are fully automated by the engine, based solely on the rules above.
-See the [detail walk-through here](../../wiki/Rules-Enginesi#example-add-order---multi-table-adjustment-chaining).
+See the [detail walk-through here](../../wiki/Rules-Engines#example-add-order---multi-table-adjustment-chaining).
 
 **Reuse over Use Cases is automatic,** so the same rules
 automate deleting and updating orders.
