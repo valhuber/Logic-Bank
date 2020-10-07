@@ -44,9 +44,9 @@ and have been **proven in practice** - see
 
  1. **Declare** logic as Python functions (see example below).
 
- 2. Your application makes calls on `sqlalchemy` for inserts, updates and deletes.
+ 2. Your application makes calls on `SQLAlchemy` for inserts, updates and deletes.
 
-    - By bundling transaction logic into sqlalchemy data access, your logic
+    - By bundling transaction logic into SQLAlchemy data access, your logic
   is automatically shared, whether for hand-written code (Flask apps, APIs)
   or via generators such as Flask AppBuilder.
 
