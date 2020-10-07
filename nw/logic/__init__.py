@@ -1,75 +1,22 @@
 import os
-from shutil import copyfile
 
 import sqlalchemy
-from sqlalchemy import event
 from sqlalchemy.orm import session
 
 from logic_bank.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
 from logic_bank.rule_bank import rule_bank_setup
 from nw.logic.rules_bank import activate_basic_check_credit_rules
 
-from nw.logic.legacy.order_code import order_commit_dirty, order_flush_dirty, order_flush_new, order_flush_delete
-from nw.logic.legacy.order_detail_code import order_detail_flush_new, order_detail_flush_delete
+import nw.logic.legacy.setup as legacy_setup
 
 from logic_bank.util import prt
-
-# from nw.logic.models import Order
-
-'''
-These listeners are part of the legacy, hand-coded logic alternative
-(Not required in a rules-based approach)
-'''
-
-
-def nw_before_commit(a_session: session):
-    print("logic: before commit!")
-    # for obj in versioned_objects(a_session.dirty):
-    for obj in a_session.dirty:
-        print("logic: before commit! --> " + str(obj))
-        obj_class = obj.__tablename__
-        if obj_class == "Order":
-            order_commit_dirty(obj, a_session)
-        elif obj_class == "OrderDetail":
-            print("Stub")
-    print("logic called: before commit!  EXIT")
-
-
-def nw_before_flush(a_session: session, a_flush_context, an_instances):
-    print("nw_before_flush")
-    for each_instance in a_session.dirty:
-        print("nw_before_flush flushing Dirty! --> " + str(each_instance))
-        obj_class = each_instance.__tablename__
-        if obj_class == "Order":
-            order_flush_dirty(each_instance, a_session)
-        elif obj_class == "OrderDetail":
-            print("Stub")
-
-    for each_instance in a_session.new:
-        print("nw_before_flush flushing New! --> " + str(each_instance))
-        obj_class = each_instance.__tablename__
-        if obj_class == "OrderDetail":
-            order_detail_flush_new(each_instance, a_session)
-        elif obj_class == "Order":
-            order_flush_new(each_instance, a_session)
-
-    for each_instance in a_session.deleted:
-        print("nw_before_flush flushing New! --> " + str(each_instance))
-        obj_class = each_instance.__tablename__
-        if obj_class == "OrderDetail":
-            order_detail_flush_delete(each_instance, a_session)
-        elif obj_class == "Order":
-            order_flush_delete(each_instance, a_session)
-
-    print("nw_before_flush  EXIT")
-
 
 """ Initialization
 1 - Connect
 2 - Register listeners (either hand-coded ones above, or the logic-engine listeners).
 """
 
-print("\n" + prt("BEGIN - setup logging, connect to db, register listeners\n"))
+print("\n" + prt("BEGIN - setup logging, connect to db, register listeners"))
 
 # Initialize Logging
 import logging
@@ -112,9 +59,7 @@ if by_rules:
     rule_bank_setup.setup(session, engine)
     activate_basic_check_credit_rules()
     rule_bank_setup.validate(session, engine)  # checks for cycles, etc
-else:  # only tested for tests/add_order, other tests likely missing logic
-    # setup to illustrate hand-coding alternative - target, modifier, function
-    event.listen(session, "before_commit", nw_before_commit)
-    event.listen(session, "before_flush", nw_before_flush)
+else:  # only tested for tests/add_order, other tests likely missing logic, counts etc
+    legacy_setup.setup(session)
 
 print("\n" + prt("END - connected, session created, listeners registered\n"))
