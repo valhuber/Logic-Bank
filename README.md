@@ -85,13 +85,14 @@ which implements\ the *check credit* requirement.
 This illustrates the advantages of a _declarative_ approach
 relative to a legacy _procedural_ approach:
 
-* **Conciseness:** these 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code),
-and are essentially an executable specification: _far_ simpler to understand.
+* **Conciseness:** these 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code).
+They are essentially an executable specification: _far_ simpler to understand,
+even for business users.
 
 * **Quality:** rules are *automatically reused* all transactions; these
 rules governs around a dozen transactions (delete OrderDetail,
 change OrderDetail quantity, change OrderDetail Product,
-change *both*, etc)
+change *both*, etc).
 
 * **Maintainability:** rule execution is *automatically ordered*
 per system-discovered dependencies.  So for maintenance,
@@ -112,7 +113,7 @@ common logic execution patterns, described below.
 
 #### Activate Rules
 To test our rules, we use
-[`nw/logic_tests/add_order.py`](nw/tests/add_order.py).
+[`nw/tests/add_order.py`](nw/tests/add_order.py).
 It activates the rules using this import:
 ```python
 from nw.logic import session  # opens db, activates logic listener <--
@@ -146,6 +147,9 @@ so it is copied
 
 1. OrderDetails are referenced by the Orders' `AmountTotal` sum rule,
 so `AmountTotal` is adjusted
+
+    * Multi-table logic is scalable - this is executed as a 1-row
+    update, not an expensive `select sum`
 
 1. The `AmountTotal` is referenced by the Customers' `Balance`,
 so it is adjusted
