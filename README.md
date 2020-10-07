@@ -148,14 +148,15 @@ so it is copied
 1. OrderDetails are referenced by the Orders' `AmountTotal` sum rule,
 so `AmountTotal` is adjusted
 
-    * Multi-table logic is scalable - this is executed as a 1-row
-    update, not an expensive `select sum`
+    * Multi-table logic is **scalable** - this rule executes as a 1-row
+    *adjustment* update, not an expensive `select sum`
 
 1. The `AmountTotal` is referenced by the Customers' `Balance`,
 so it is adjusted
 
 1. And the Credit Limit constraint is checked 
-(exceptions are raised if constraints are violated)
+(exceptions are raised if constraints are violated,
+and the transaction is rolled back)
 
 All of the dependency management to see which attribute have changed,
 logic ordering, the SQL commands to read and adjust rows, and the chaining
