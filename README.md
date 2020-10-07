@@ -212,9 +212,11 @@ You can
 1. Navigate to Order 11011 (a _multi-page_ web app)
 2. Click Edit so you can make changes
 3. Change the Shipped Date
-3. Verify logic enforcement
+4. Click save
+5. Verify logic enforcement
     * The web app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
-    * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) - check out the console log
+    * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) -
+    check out the console log
 
 #### Iteration - Automatic Ordering
 Rules are _self-organizing_ - they recognize their interdependencies,
