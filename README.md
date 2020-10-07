@@ -86,14 +86,14 @@ This illustrates the advantages of a _declarative_ approach
 relative to a legacy _procedural_ approach:
 
 * **Conciseness:** these 5 rules replace [**these 200 lines of legacy code**](../../wiki/by-code),
-and are far more readable.
+and are essentially an executable specification: _far_ simpler to understand.
 
-* **Quality:** rules automatically govern all transactions; these
+* **Quality:** rules are *automatically reused* all transactions; these
 rules governs around a dozen transactions (delete OrderDetail,
 change OrderDetail quantity, change OrderDetail Product,
 change *both*, etc)
 
-* **Maintainability:** rule execution is automatically ordered
+* **Maintainability:** rule execution is *automatically ordered*
 per system-discovered dependencies.  So for maintenance,
 just change the rules - the system will re-order and re-optimize.
 
@@ -102,7 +102,8 @@ just change the rules - the system will re-order and re-optimize.
 Note the Python integration:
 
 * Rules are stated in Python, so you get IDE features like type checking,
-code completion, source code management, debugging (the diagram shows a breakpoint in a rule)
+code completion, source code management, debugging
+(the diagram shows a breakpoint in a rule), etc
 
 * Rules are extensible - they can call Python code (see `congratulate_sales_rep`)
 
