@@ -42,7 +42,7 @@ and have been **proven in practice** - see
 <figure><img src="images/architecture.png" width="800"></figure>
 
 
- 1. **Declare** logic as Python functions (see example below).
+ 1. **Declare** logic as rules and Python (see example below).
 
  2. Your application makes calls on `SQLAlchemy` for inserts, updates and deletes.
 
