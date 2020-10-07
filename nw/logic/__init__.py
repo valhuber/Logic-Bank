@@ -52,7 +52,7 @@ session_maker = sqlalchemy.orm.sessionmaker()
 session_maker.configure(bind=engine)
 session = session_maker()
 
-by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
+by_rules = False  # True => use rules, False => use legacy hand code (for comparison)
 rule_list = None
 db = None
 if by_rules:
@@ -60,6 +60,6 @@ if by_rules:
     activate_basic_check_credit_rules()
     rule_bank_setup.validate(session, engine)  # checks for cycles, etc
 else:  # only tested for tests/add_order, other tests likely missing logic, counts etc
-    legacy_setup.setup(session)
+    legacy_setup.setup(session)  # test asserts fail due to counts (else ok)
 
 print("\n" + prt("END - connected, session created, listeners registered\n"))
