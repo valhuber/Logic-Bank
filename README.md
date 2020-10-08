@@ -120,7 +120,7 @@ from nw.logic import session  # opens db, activates logic listener <--
 ```
  
 This executes [`nw/logic/__init__.py`](nw/logic/__init__.py),
-which sets up the rule engine:
+which activates the logic engine:
 ```python
 by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
 if by_rules:
