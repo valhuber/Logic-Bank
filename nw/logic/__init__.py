@@ -57,7 +57,7 @@ rule_list = None
 db = None
 if by_rules:
     logic_bank_setup.activate(session=session, activator=declare_logic)
-else:  # only tested for tests/add_order, other tests likely missing logic, counts etc
+else:
     legacy_setup.setup(session)  # test asserts fail due to counts (else ok)
 
 print("\n" + prt("END - connected, session created, listeners registered\n"))

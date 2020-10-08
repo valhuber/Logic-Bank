@@ -42,6 +42,18 @@ def before_flush(a_session: session, a_flush_context, an_instances):
 
 
 def setup(session: session):
+    """
+    setup legacy logic
+
+    only implements 5 basic check-credit rules
+    other Use Cases not implemented
+
+    only tested for tests/add_order
+    tests will fail that verify counts
+
+    :param session:
+    :return:
+    """
     # target, modifier, function
     print("\n" + prt("legacy setup - register listeners"))
     event.listen(session, "before_flush", before_flush)
