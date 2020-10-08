@@ -32,7 +32,7 @@ if use_rules:
     import nw.db.models as models  # FIXME design prevents circular imports
 
     from logic_bank.rule_bank import rule_bank_setup
-    from nw.logic import activate_basic_check_credit_rules
+    from nw.logic import declare_logic
 
 """
  Logging configuration
@@ -49,7 +49,7 @@ appbuilder = AppBuilder(app, db.session)
 
 if use_rules:
     rule_bank_setup.setup(db.session, db.engine)
-    activate_basic_check_credit_rules()
+    declare_logic()
     rule_bank_setup.validate(db.session, db.engine)  # checks for cycles, etc
 
 """

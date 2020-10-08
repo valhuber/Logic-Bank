@@ -124,9 +124,7 @@ which sets up the rule engine:
 ```python
 by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
 if by_rules:
-    rule_bank_setup.setup(session, engine)     # setup rules engine
-    activate_basic_check_credit_rules()        # loads rules above
-    rule_bank_setup.validate(session, engine)  # checks for cycles, etc
+    logic_bank_setup.activate(session=session, activator=declare_logic)
 else:
     # ... conventional after_flush listeners (to see rules/code contrast)
 ```

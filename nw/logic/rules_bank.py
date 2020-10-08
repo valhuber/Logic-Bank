@@ -3,7 +3,7 @@ from logic_bank.rule import Rule
 from nw.db.models import Customer, OrderDetail, Product, Order
 
 
-def activate_basic_check_credit_rules():
+def declare_logic():
     """
     Issues function calls to activate check credit rules, below.
         These rules are executed not now, but on commits

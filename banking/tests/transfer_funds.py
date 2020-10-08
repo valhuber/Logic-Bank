@@ -103,4 +103,4 @@ if not did_fail_as_expected:
     logic_row.log("ERROR -overdraft checking expected to fail, but succeeded")
     assert False
 else:
-    logic_row.log("Overdraft Funds Test rolled back transfer")
+    logic_row.log("Overdraft Funds Test properly rolled back invalid transfer")

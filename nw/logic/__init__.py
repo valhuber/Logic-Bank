@@ -4,8 +4,8 @@ import sqlalchemy
 from sqlalchemy.orm import session
 
 from logic_bank.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
-from logic_bank.rule_bank import rule_bank_setup
-from nw.logic.rules_bank import activate_basic_check_credit_rules
+from logic_bank.rule_bank import logic_bank_setup
+from nw.logic.rules_bank import declare_logic
 
 import nw.logic.legacy.setup as legacy_setup
 
@@ -56,9 +56,7 @@ by_rules = True  # True => use rules, False => use legacy hand code (for compari
 rule_list = None
 db = None
 if by_rules:
-    rule_bank_setup.setup(session, engine)
-    activate_basic_check_credit_rules()
-    rule_bank_setup.validate(session, engine)  # checks for cycles, etc
+    logic_bank_setup.activate(session=session, activator=declare_logic)
 else:  # only tested for tests/add_order, other tests likely missing logic, counts etc
     legacy_setup.setup(session)  # test asserts fail due to counts (else ok)
 
