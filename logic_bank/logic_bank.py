@@ -1,13 +1,39 @@
 from typing import Callable
 
 from sqlalchemy.orm.attributes import InstrumentedAttribute
+from sqlalchemy.orm import session
 
+from logic_bank.rule_bank.rule_bank_setup import setup, validate
 from logic_bank.rule_type.constraint import Constraint
 from logic_bank.rule_type.copy import Copy
 from logic_bank.rule_type.count import Count
 from logic_bank.rule_type.formula import Formula
 from logic_bank.rule_type.row_event import EarlyRowEvent, RowEvent, CommitRowEvent
 from logic_bank.rule_type.sum import Sum
+
+
+class LogicBank:
+    """
+    Logic consists of Rules, and Python.
+
+    Activate your logic,
+    providing a function that declares your rules and Python.
+    """
+
+    def activate(session: session, activator: callable):
+        """
+        load rules - executed on commit
+
+        raises exception if cycles detected
+
+        :param session: SQLAlchemy session
+        :param activator: function that declares rules (e.g., Rule.sum...)
+        :return:
+        """
+        engine = session.bind.engine
+        setup(session, engine)
+        activator()
+        validate(session, engine)
 
 
 class Rule:

@@ -124,7 +124,7 @@ which activates the logic engine:
 ```python
 by_rules = True  # True => use rules, False => use legacy hand code (for comparison)
 if by_rules:
-    logic_bank_setup.activate(session=session, activator=declare_logic)
+    LogicBank.activate(session=session, activator=declare_logic)
 else:
     # ... conventional after_flush listeners (to see rules/code contrast)
 ```

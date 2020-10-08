@@ -6,9 +6,8 @@ from sqlalchemy import event
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import session
 
-from logic_bank.rule_bank import rule_bank_withdraw, \
-    logic_bank_setup  # FIXME design why required to avoid circular imports??
-from logic_bank.rule_bank import rule_bank_setup
+from logic_bank.rule_bank import rule_bank_withdraw  # FIXME design why required to avoid circular imports??
+from logic_bank.logic_bank import LogicBank
 from banking.logic.rules_bank import activate_basic_rules
 
 from logic_bank.util import prt
@@ -57,6 +56,6 @@ session = session_maker()
 
 rule_list = None
 db = None
-logic_bank_setup.activate(session=session, activator=activate_basic_rules)
+LogicBank.activate(session=session, activator=activate_basic_rules)
 print("\n" + prt("session created, listeners registered\n"))
 
