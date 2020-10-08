@@ -219,7 +219,7 @@ You can
     check out the console log
 
 #### Iteration - Automatic Ordering
-Rules are _self-organizing_ - they recognize their interdependencies,
+Rules are _self-ordering_ - they recognize their interdependencies,
 and order their execution and database access (pruning, adjustments etc)
 accordingly.  This means:
 
