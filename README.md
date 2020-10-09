@@ -209,7 +209,7 @@ Ensure you have these pre-reqs, or install them as [described here](../../wiki/E
 We also recommend an IDE such as PyCharm, VSCode, etc.
 
 ### Install Logic-Bank
-In your IDE or Command Line after you `git fork/clone` this repository:
+In your IDE or Command Line:
 
 ```
 # optionally fork, and then
