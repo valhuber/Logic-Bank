@@ -212,6 +212,8 @@ We also recommend an IDE such as PyCharm, VSCode, etc.
 In your IDE or Command Line after you `git fork/clone` this repository:
 
 ```
+# optionally fork, and then
+git clone https://github.com/valhuber/Logic-Bank.git
 cd Logic-Bank
 virtualenv venv
 # windows: .\venv\Scripts\activate
