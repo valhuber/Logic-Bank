@@ -247,8 +247,13 @@ flask run
 You then start the app with [`http://127.0.0.1:5000/`]( http://127.0.0.1:5000/)
 > **Login** (upper right): user = admin, password = p
 
+<a href="http://127.0.0.1:5000/" target="_blank">Basic Web App</a>
 You can
 1. Navigate to Order 11011 (a _multi-page_ web app)
+    * Click **Menu > Customer List** 
+    * Click the **magnifying glass** for the first customer
+    * Click the **List Order tab**
+    * Click the **magnifying glass* for Order **11011**
 2. Click Edit so you can make changes
 3. Change the Shipped Date
 4. Click save
