@@ -194,7 +194,39 @@ project enables you to build a basic web app in minutes.
 <figure><img src="images/fab.png" width="800"></figure>
 
 This project has already generated such an app, which you can run like this
-once you've finished the Installation process:
+once you've finished the Installation process, below.
+
+#### Iteration - Automatic Ordering
+Rules are _self-ordering_ - they recognize their interdependencies,
+and order their execution and database access (pruning, adjustments etc)
+accordingly.  This means:
+
+* order is independent - you can state the rules in any order
+and get the same result
+
+* maintenance is simple - just make changes, additions and deletions,
+the engine will reorganize execution order and database access, automatically
+
+
+## Installation
+### Verify Pre-reqs: Python 3.8, virtualenv, pip3
+Ensure you have these pre-reqs, or install them as [described here](../../wiki/Explore-Logic-Bank).
+We also recommend an IDE such as PyCharm, VSCode, etc.
+
+### Install Logic-Bank
+In your IDE or Command Line after you `git fork/clone` this repository:
+
+```
+cd Logic-Bank
+virtualenv venv
+# windows: .\venv\Scripts\activate
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+#### Verify and Run
+
+##### Run Basic Web App
 
 ```
 cd Logic-Bank
@@ -216,40 +248,8 @@ You can
     * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) -
     check out the console log
 
-#### Iteration - Automatic Ordering
-Rules are _self-ordering_ - they recognize their interdependencies,
-and order their execution and database access (pruning, adjustments etc)
-accordingly.  This means:
-
-* order is independent - you can state the rules in any order
-and get the same result
-
-* maintenance is simple - just make changes, additions and deletions,
-the engine will reorganize execution order and database access, automatically
-
-
-## Installation
-### Verify Pre-reqs: Python 3.8, virtualenv, pip3
-Ensure you have these pre-reqs, or install them as [decscribed here](../../wiki/Explore-Logic-Bank).
-We also recommend an IDE such as PyCharm, VSCode, etc.
-
-### Install Logic-Bank
-In your IDE or Command Line:
-
-```
-git fork / clone
-cd Logic-Bank
-virtualenv venv
-# windows: .\venv\Scripts\activate
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-#### Verify and Run
-To run:
-1. Run the Web App as described under Agile / Collaboration, above
-
-2. Run the `nw/tests` programs under your IDE or the
+##### Run the `nw/tests`
+Run the `nw/tests` programs under your IDE or the
 command line; start with `add_order` and `upd_order_shipped,`
 and see the [walk-throughs here](../../wiki/home).
  - Note: the **log** depicts logic execution
