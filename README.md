@@ -232,7 +232,7 @@ cd nw/basic_web_app
 export FLASK_APP=app
 flask run
 ```
-
+You then start the app with [`http://127.0.0.1:5000/`]( http://127.0.0.1:5000/)
 > **Login** (upper right): user = admin, password = p
 
 You can
