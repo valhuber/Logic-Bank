@@ -226,7 +226,7 @@ pip install -r requirements.txt
 
 #### Verify and Run
 
-##### Run Basic Web App
+##### Run `basic_web_app`
 
 ```
 cd Logic-Bank
@@ -236,7 +236,7 @@ export FLASK_APP=app
 flask run
 ```
 
-Login: user = admin, password = p
+> **Login** (upper right): user = admin, password = p
 
 You can
 1. Navigate to Order 11011 (a _multi-page_ web app)
@@ -283,10 +283,10 @@ To explore:
 * Click [here](../../wiki/Logic-Walkthrough) for a
     short overview of internal logic execution
 
-#### See also the Logic-Bank-Examples project
+##### See also the Logic-Bank-Examples project
 The `Logic Bank Examples` [here](../../wiki/Sample-Project---Setup)
-contains the same example, but _not_ the `logic_bank` engine source code.
-It uses the logic engine via `pip install`, as you would for your own projects
+contains the same examples, but _not_ the `logic_bank` engine source code.
+It uses the logic engine via `pip install`, as you would for your own projects.
 
 
 #### Status: Running, Under Development

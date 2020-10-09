@@ -39,12 +39,13 @@ def copy_rules(logic_row: LogicRow) -> CopyRulesForTable:
     """
     rule_bank = RuleBank()
     role_rules_list = {}  # dict of RoleRules
-    for each_rule in rule_bank._tables[logic_row.name].rules:
-        if isinstance(each_rule, Copy):
-            role_name = each_rule._from_parent_role
-            if role_name not in role_rules_list:
-                role_rules_list[role_name] = []
-            role_rules_list[role_name].append(each_rule)
+    if logic_row.name in rule_bank._tables:
+        for each_rule in rule_bank._tables[logic_row.name].rules:
+            if isinstance(each_rule, Copy):
+                role_name = each_rule._from_parent_role
+                if role_name not in role_rules_list:
+                    role_rules_list[role_name] = []
+                role_rules_list[role_name].append(each_rule)
     return role_rules_list
 
 """
@@ -149,13 +150,13 @@ def get_referring_children(parent_logic_row: LogicRow) -> dict:
     referring_children is <parent_role_name>, parent_attribute_list()
     """
     rule_bank = RuleBank()
-    table_rules = rule_bank._tables[parent_logic_row.name]
-    result = table_rules.referring_children
-    if result is not None:
-       return result
+    if parent_logic_row.name not in rule_bank._tables:
+       return {}
     else:
         # sigh, best to have built this in rule_bank_setup, but unable to get mapper
         # FIXME design is this threadsafe?
+        table_rules = rule_bank._tables[parent_logic_row.name]
+        result = table_rules.referring_children
         table_rules.referring_children = {}
         parent_mapper = object_mapper(parent_logic_row.row)
         parent_relationships = parent_mapper.relationships
