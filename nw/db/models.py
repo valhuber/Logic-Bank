@@ -1,8 +1,8 @@
 # coding: utf-8
 
 """
-WARNING: used in logic, but FAB uses version in nw-app/app
-The primary copy is here -- copy changes to nw-app/app.
+WARNING: used in logic, but FAB uses version in basic_web_app/app
+The primary copy is here -- copy changes to basic_web_app/app.
 
 on relationships...
   * declare them in the parent (not child), eg, for Order:
@@ -42,8 +42,8 @@ class Customer(Base):
     Country = Column(String(8000))
     Phone = Column(String(8000))
     Fax = Column(String(8000))
-    Balance = Column(DECIMAL)
-    CreditLimit = Column(DECIMAL)
+    Balance = Column(DECIMAL(10, 2))
+    CreditLimit = Column(DECIMAL(10, 2))
     OrderCount = Column(Integer)
     UnpaidOrderCount = Column(Integer)
 
@@ -102,7 +102,7 @@ class Product(Base):
     SupplierId = Column(Integer, nullable=False)
     CategoryId = Column(Integer, nullable=False)
     QuantityPerUnit = Column(String(8000))
-    UnitPrice = Column(DECIMAL, nullable=False)
+    UnitPrice = Column(DECIMAL(10, 2), nullable=False)
     UnitsInStock = Column(Integer, nullable=False)
     UnitsOnOrder = Column(Integer, nullable=False)
     ReorderLevel = Column(Integer, nullable=False)
@@ -183,14 +183,14 @@ class Order(Base):
     RequiredDate = Column(String(8000))
     ShippedDate = Column(String(8000))
     ShipVia = Column(Integer)
-    Freight = Column(DECIMAL, nullable=False)
+    Freight = Column(DECIMAL(10, 2), nullable=False)
     ShipName = Column(String(8000))
     ShipAddress = Column(String(8000))
     ShipCity = Column(String(8000))
     ShipRegion = Column(String(8000))
     ShipPostalCode = Column(String(8000))
     ShipCountry = Column(String(8000))
-    AmountTotal = Column(DECIMAL)
+    AmountTotal = Column(DECIMAL(10, 2))
 
     OrderDetailList = relationship("OrderDetail",
                                    backref="OrderHeader",
@@ -204,15 +204,11 @@ class OrderDetail(Base):
     Id = Column(Integer, primary_key=True)  #, autoincrement=True)
     OrderId = Column(ForeignKey('Order.Id'), nullable=False)
     ProductId = Column(ForeignKey('Product.Id'), nullable=False)
-    UnitPrice = Column(DECIMAL, nullable=False)
+    UnitPrice = Column(DECIMAL(10, 2), nullable=False)
     Quantity = Column(Integer, nullable=False)
     Discount = Column(Float, nullable=False)
-    Amount = Column(DECIMAL)
+    Amount = Column(DECIMAL(10, 2))
     ShippedDate = Column(String(8000))
-
-    # Order = relationship('Order', back_populates="OrderDetailList")  FIXME cleanup
-    # Product = relationship('Product')
-
 
 
 class AbPermission(Base):

@@ -62,9 +62,9 @@ class OrderDetailModelView(ModelView):
    show_columns = [
 "Id", "Product.ProductName", "Order.ShipName", "UnitPrice", "Quantity", "Discount", "Amount", "OrderId", "ProductId"]
    edit_columns = [
-"Id", "UnitPrice", "Quantity", "Discount", "Amount", "OrderId", "ProductId"]
+"Id", "UnitPrice", "Quantity", "OrderId", "ProductId"]
    add_columns = [
-"Id", "UnitPrice", "Quantity", "Discount", "Amount", "OrderId", "ProductId"]
+"Id", "UnitPrice", "Quantity", "OrderId", "ProductId"]
    related_views = []
 
 appbuilder.add_view(
@@ -78,8 +78,8 @@ class OrderModelView(ModelView):
    datamodel = SQLAInterface(Order)
    list_columns = ["Id", "ShipName", "AmountTotal", "OrderDate", "ShippedDate"]
    show_columns = ["ShipName", "Customer.CompanyName", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry", "AmountTotal", "EmployeeId", "Id", "CustomerId"]
-   edit_columns = ["ShipName", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry", "AmountTotal", "EmployeeId", "Id", "CustomerId"]
-   add_columns = ["ShipName", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry", "AmountTotal", "EmployeeId", "Id", "CustomerId"]
+   edit_columns = ["ShipName", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry", "EmployeeId", "Id", "CustomerId"]
+   add_columns = ["ShipName", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry", "EmployeeId", "Id", "CustomerId"]
    related_views = [OrderDetailModelView]
 
 appbuilder.add_view(
@@ -93,8 +93,8 @@ class CustomerModelView(ModelView):
    datamodel = SQLAInterface(Customer)
    list_columns = ["Id", "CompanyName", "ContactName", "Balance", "CreditLimit", "OrderCount", "UnpaidOrderCount"]
    show_columns = ["CompanyName",  "Balance", "CreditLimit", "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
-   edit_columns = ["CompanyName",  "Balance", "CreditLimit",  "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
-   add_columns = ["CompanyName",  "Balance", "CreditLimit",  "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
+   edit_columns = ["CompanyName",  "CreditLimit",  "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
+   add_columns = ["CompanyName",   "CreditLimit",  "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
    related_views = [CustomerCustomerDemoModelView, OrderModelView]
 
 appbuilder.add_view(
