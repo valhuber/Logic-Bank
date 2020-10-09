@@ -73,13 +73,8 @@ For those not familiar, this is basically
 Customers, Orders, OrderDetails and Products,
 as shown in the diagrams below.
 
-#### Install the Logic Bank
-```
-pip install -i https://test.pypi.org/simple/ logic-bank
-```
-
 #### Declare rules using Python
-Logic is declared as spreadsheet-like rules as shown below
+Once you `pip install` LogicBank, logic is declared as spreadsheet-like rules as shown below
 from  [`nw/logic/rules_bank.py`](nw/logic/rules_bank.py),
 which implements the *check credit* requirement.
 This illustrates the advantages of a _declarative_ approach
@@ -286,8 +281,13 @@ To explore:
 ##### See also the Logic-Bank-Examples project
 The `Logic Bank Examples` [here](../../wiki/Sample-Project---Setup)
 contains the same examples, but _not_ the `logic_bank` engine source code.
-It uses the logic engine via `pip install`, as you would for your own projects.
+It uses the logic engine via `pip install`, as you would for your own projects:
 
+```
+pip install -i https://test.pypi.org/simple/ logic-bank
+```
+> This is **not required here**, and requires the same
+> pre-reqs noted above
 
 #### Status: Running, Under Development
 Functionally complete, 9/29/2020, tested for 2 databases.
