@@ -211,7 +211,7 @@ python --version
 # requires 3.8 or higher
 
 pip --version
-# version 19.2.3 or higher
+# version 19.2.3 or higher... you might be using pip3
 
 pyenv --version
 # 1.2.19 or higher
