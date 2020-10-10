@@ -9,6 +9,7 @@ on relationships...
   *    OrderDetailList = relationship("OrderDetail", backref="OrderHeader", cascade_backrefs=True)
 
 """
+
 import sqlalchemy_utils
 from sqlalchemy import Boolean, Column, DECIMAL, DateTime, Float, ForeignKey, Integer, LargeBinary, String, UniqueConstraint
 from sqlalchemy.orm import relationship
@@ -80,6 +81,7 @@ class Employee(Base):
     Extension = Column(String(8000))
     Photo = Column(LargeBinary)
     Notes = Column(String(8000))
+    # ReportsTo = Column(Integer)
     ReportsTo = Column(ForeignKey('Employee.Id'), nullable=False)
     PhotoPath = Column(String(8000))
 
@@ -87,6 +89,7 @@ class Employee(Base):
     # https://stackoverflow.com/questions/2638217/sqlalchemy-mapping-self-referential-relationship-as-one-to-many-declarative-f
     Manager = relationship('Employee', remote_side='Employee.Id',
                                       backref='Manages')  # parent Company
+    TerritoryList = relationship("EmployeeTerritory", cascade_backrefs=True, backref="Employee")
 
 
 class Product(Base):
@@ -147,14 +150,14 @@ class Territory(Base):
     TerritoryDescription = Column(String(8000))
     RegionId = Column(Integer, nullable=False)
 
+    EmployeeList = relationship("EmployeeTerritory", cascade_backrefs=True, backref="Territory")
+
 
 class CustomerCustomerDemo(Base):
     __tablename__ = 'CustomerCustomerDemo'
 
     Id = Column(String(8000), primary_key=True)
     CustomerTypeId = Column(ForeignKey('Customer.Id'))
-
-    Customer = relationship('Customer')
 
 
 class EmployeeTerritory(Base):
@@ -163,9 +166,6 @@ class EmployeeTerritory(Base):
     Id = Column(String(8000), primary_key=True)
     EmployeeId = Column(ForeignKey('Employee.Id'), nullable=False)
     TerritoryId = Column(ForeignKey('Territory.Id'))
-
-    Employee = relationship('Employee')
-    Territory = relationship('Territory')
 
 
 class Order(Base):
@@ -301,3 +301,4 @@ class AbPermissionViewRole(Base):
 
     permission_view = relationship('AbPermissionView')
     role = relationship('AbRole')
+

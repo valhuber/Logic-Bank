@@ -37,24 +37,6 @@ appbuilder.add_view(
       CategoryModelView, "Category List", icon="fa-folder-open-o", category="Menu")
 
 
-
-
-
-class CustomerCustomerDemoModelView(ModelView):
-   datamodel = SQLAInterface(CustomerCustomerDemo)
-   list_columns = ["Id", "Customer.CompanyName"]
-   show_columns = ["Id", "Customer.CompanyName", "CustomerTypeId"]
-   edit_columns = ["Id", "CustomerTypeId"]
-   add_columns = ["Id", "CustomerTypeId"]
-   related_views = []
-
-appbuilder.add_view(
-      CustomerCustomerDemoModelView, "CustomerCustomerDemo List", icon="fa-folder-open-o", category="Menu")
-
-
-
-
-
 class OrderDetailModelView(ModelView):
    datamodel = SQLAInterface(OrderDetail)
    list_columns = [
@@ -95,7 +77,7 @@ class CustomerModelView(ModelView):
    show_columns = ["CompanyName",  "Balance", "CreditLimit", "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
    edit_columns = ["CompanyName",  "CreditLimit",  "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
    add_columns = ["CompanyName",   "CreditLimit",  "OrderCount", "UnpaidOrderCount", "ContactName", "ContactTitle", "Address", "City", "Region", "PostalCode", "Country", "Phone", "Fax", "Id"]
-   related_views = [CustomerCustomerDemoModelView, OrderModelView]
+   related_views = [OrderModelView]
 
 appbuilder.add_view(
       CustomerModelView, "Customer List", icon="fa-folder-open-o", category="Menu")
@@ -159,7 +141,7 @@ class EmployeeModelView(ModelView):
    show_columns = ["LastName", "FirstName", "Title", "TitleOfCourtesy", "BirthDate", "HireDate", "Address", "City", "Region", "PostalCode", "Country", "HomePhone", "Extension", "Photo", "Notes", "ReportsTo", "PhotoPath", "Id"]
    edit_columns = ["LastName", "FirstName", "Title", "TitleOfCourtesy", "BirthDate", "HireDate", "Address", "City", "Region", "PostalCode", "Country", "HomePhone", "Extension", "Photo", "Notes", "ReportsTo", "PhotoPath", "Id"]
    add_columns = ["LastName", "FirstName", "Title", "TitleOfCourtesy", "BirthDate", "HireDate", "Address", "City", "Region", "PostalCode", "Country", "HomePhone", "Extension", "Photo", "Notes", "ReportsTo", "PhotoPath", "Id"]
-   related_views = [EmployeeTerritoryModelView]
+   related_views = [OrderModelView, EmployeeTerritoryModelView]
 
 appbuilder.add_view(
       EmployeeModelView, "Employee List", icon="fa-folder-open-o", category="Menu")
