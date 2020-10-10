@@ -58,9 +58,9 @@ appbuilder.add_view(
 class OrderDetailModelView(ModelView):
    datamodel = SQLAInterface(OrderDetail)
    list_columns = [
-"Id", "Product.ProductName", "Order.ShipName", "UnitPrice", "Quantity", "Amount"]
+"Id", "ProductOrdered.ProductName", "UnitPrice", "Quantity", "Amount"]
    show_columns = [
-"Id", "Product.ProductName", "Order.ShipName", "UnitPrice", "Quantity", "Discount", "Amount", "OrderId", "ProductId"]
+"Id", "ProductOrdered.ProductName", "OrderHeader.ShipName", "UnitPrice", "Quantity", "Discount", "Amount", "OrderId", "ProductId"]
    edit_columns = [
 "Id", "UnitPrice", "Quantity", "OrderId", "ProductId"]
    add_columns = [
