@@ -78,19 +78,19 @@ def toggle_order_shipped():
         logic_row.log("Correct adjusted Customer Result")
         assert True
     else:
-        logic_row.log(post_cust, "ERROR - incorrect adjusted Customer Result")
+        logic_row.log("ERROR - incorrect adjusted Customer Result")
         assert False
 
-    if post_cust.Balance == 0:
+    if post_cust.Balance == 56:
         pass
     else:
-        logic_row.log("ERROR - balance should be 0")
+        logic_row.log("ERROR - balance should be 56")
         assert False
 
-    if post_cust.UnpaidOrderCount == 2 and pre_cust.UnpaidOrderCount == 3:
+    if post_cust.UnpaidOrderCount == 3 and pre_cust.UnpaidOrderCount == 4:
         pass
     else:
-        logic_row.log("Error - UnpaidOrderCount should be 2")
+        logic_row.log("Error - UnpaidOrderCount should be 3")
         assert False
 
 

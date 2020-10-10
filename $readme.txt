@@ -65,3 +65,7 @@ CREATE TABLE IF NOT EXISTS "OrderX"
 );
 
 insert into Orderx select * from "Order";
+
+SELECT Id, CustomerId FROM "Order"
+WHERE NOT EXISTS (SELECT 1 FROM Customer WHERE Customer.Id = "Order".CustomerId);
+

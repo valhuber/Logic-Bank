@@ -114,12 +114,12 @@ post_alfki = session.query(models.Customer).filter(models.Customer.Id == "ALFKI"
 logic_row = LogicRow(row=post_alfki, old_row=pre_alfki,
                      ins_upd_dlt="*", nest_level=0, a_session=session, row_sets=None)
 
-if post_alfki.Balance == 0:
+if post_alfki.Balance == 56:
     logic_row.log("Correct non-adjusted Customer Result")
     assert True
 else:
     print("\n*** ERROR***")
-    msg = "ERROR - incorrect adjusted Customer Result, " + "should be 0"
+    msg = "ERROR - incorrect adjusted Customer Result, " + "should be 56"
     logic_row.log(msg)
     assert False
 
