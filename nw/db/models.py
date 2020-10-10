@@ -47,8 +47,7 @@ class Customer(Base):
     OrderCount = Column(Integer)
     UnpaidOrderCount = Column(Integer)
 
-    #  OrderList = relationship("Order", cascade_backrefs=True)  # backref="Customer", FIXME cleanup
-    OrderList = relationship("Order",
+    OrderList = relationship("Order",  # FIXME causes basic_web_app Menu > Order List to fail
                              backref="Customer",
                              cascade="all, delete",
                              passive_deletes=True,  # means database RI will do the deleting
@@ -81,7 +80,6 @@ class Employee(Base):
     Extension = Column(String(8000))
     Photo = Column(LargeBinary)
     Notes = Column(String(8000))
-    # ReportsTo = Column(Integer)
     ReportsTo = Column(ForeignKey('Employee.Id'), nullable=False)
     PhotoPath = Column(String(8000))
 
@@ -90,9 +88,6 @@ class Employee(Base):
     Manager = relationship('Employee', remote_side='Employee.Id',
                                       backref='Manages')  # parent Company
 
-# not sure about this... adding backref="Order" causes this failure:  FIXME cleanup
-# "Error creating backref 'Employee' on relationship 'Employee.OrderList':
-#   property of that name exists on mapper 'mapped class Order->Order'"
 
 class Product(Base):
     __tablename__ = 'Product'
