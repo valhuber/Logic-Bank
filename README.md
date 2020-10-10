@@ -260,6 +260,8 @@ You can
     * The web app has been [configured](../../wiki/Flask-App-Builder-Integration) to activate the rules
     * The logic for this update [is interesting](../../wiki/home#example-ship-order---pruning-adjustment-and-cascade) -
     check out the console log
+    
+> Current Bug: clicking ** Menu > Order List ** causes a failure
 
 ##### Run the `nw/tests`
 Run the `nw/tests` programs under your IDE or the
