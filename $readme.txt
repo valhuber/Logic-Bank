@@ -69,3 +69,9 @@ insert into Orderx select * from "Order";
 SELECT Id, CustomerId FROM "Order"
 WHERE NOT EXISTS (SELECT 1 FROM Customer WHERE Customer.Id = "Order".CustomerId);
 
+OrderList fails on 10248 : 10272 (no orphans to Customer, Employee) - serving.py @ 314
+ha!  Due to a null row - deleted it, runs fine now
+[10248, 10249, 10250, 10251, 10252, 10253, 10254, 10255, 10256, 10257, 10258, 10259, 10260, 10261, 10262, 10263, 10264, 10265, 10266, 10267, 10268, 10269, 10270, 10271, 10272]
+
+SELECT Id, EmployeeId FROM "Order"
+WHERE NOT EXISTS (SELECT 1 FROM Employee WHERE Employee.Id = "Order".EmployeeId);
