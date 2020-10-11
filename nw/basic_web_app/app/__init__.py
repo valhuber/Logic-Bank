@@ -24,6 +24,7 @@ if use_rules:
         print("basic_web_app/app/__init__.py fixing path (so can run from terminal) with: " +
               required_path_python_rules)
         sys.path.append(required_path_python_rules)
+        print("sys_path: " + str(sys.path))
     else:
         pass
         print("NOT Fixing path (default PyCharm, set in VSC Launch Config): " +

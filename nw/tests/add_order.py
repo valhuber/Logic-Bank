@@ -18,6 +18,7 @@ for each_node in sys.path:
 if not required_path_present:
     print("Fixing path (so can run from terminal)")
     sys.path.append(required_path_python_rules)
+    sys_path += required_path_python_rules + "\n"
 else:
     pass
     print("NOT Fixing path (default PyCharm, set in VSC Launch Config)")
