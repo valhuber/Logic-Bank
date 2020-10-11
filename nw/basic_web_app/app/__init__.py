@@ -12,6 +12,7 @@ if use_rules:
     required_path_python_rules = cwd  # seeking /Users/val/python/pycharm/logic-bank
     required_path_python_rules = required_path_python_rules.replace("/nw/basic_web_app", "")
     required_path_python_rules = required_path_python_rules.replace("\\nw\\basic_web_app", "")
+    required_path_python_rules = required_path_python_rules.replace("\\\\", "\\")  # you cannot be serious
 
     sys_path = ""
     required_path_present = False
