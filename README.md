@@ -1,3 +1,5 @@
+OBSOLETE - use https://github.com/valhuber/logicbank
+
 Use Logic Bank to govern SQLAlchemy
 update transaction logic - multi-table derivations, constraints,
 and actions such as sending mail or messages. Logic consists of:
